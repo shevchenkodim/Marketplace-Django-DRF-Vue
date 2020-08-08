@@ -1,0 +1,15 @@
+## Python ###
+# Byte-compiled / optimized / DLL files
+venv
+*/migrations/
+__pycache__/
+*.py[cod]
+
+*.log
+*.pot
+*.pyc
+.idea
+
+.env
+
+db.sqlite3
