@@ -275,50 +275,49 @@
         <div class="page-wrapper bg-light">
             <div class="pl-5 pr-5">
 
+                <!-- Start Medium -->
                 {% block medium %}
 
-
-                    {% block main_slider %}
-                        {% include 'main_slider.html' %}
-                    {% endblock main_slider %}
-
-
+                    <!-- Start Content -->
                     {% block content %}
+
+                        <!-- Start Slider -->
+                        {% block main_slider %}
+                            {% include 'main_slider.html' %}
+                        {% endblock main_slider %}
+                        <!-- End Slider -->
+
+                        <!-- Start Novelty -->
+                        {% block novelty %}
+                            {% include 'novelty.html' %}
+                        {% endblock novelty %}
+                        <!-- End Novelty -->
+
                     {% endblock content %}
+                    <!-- End Content -->
 
-
-                    {% block novelty %}
-                        {% include 'novelty.html' %}
-                    {% endblock novelty %}
-
-
+                    <!-- Start Social Network -->
                     {% block info_social_network %}
                         {% include 'info_social_network.html' %}
                     {% endblock info_social_network %}
+                    <!-- End Social Network -->
 
-
+                    <!-- Start Info -->
                     {% block info %}
                         {% include 'info.html' %}
                     {% endblock info %}
-
+                    <!-- End Info -->
 
                 {% endblock medium %}
+                <!-- End Medium -->
             </div>
 
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <footer class="footer text-center bg-dark">
-                <span class="text-light">
-                    Designed and Developed by
-                    <a href="https://www.instagram.com/dima_shevchenko99/">
-                        Dmytro Shevchenko
-                    </a>.
-                </span>
-            </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
+            <!-- Start Footer -->
+            {% block footer %}
+                {% include 'footer.html' %}
+            {% endblock footer %}
+            <!-- End Footer -->
+
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
@@ -356,8 +355,10 @@
     <script src="{% static '/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
     <script src="{% static '/js/pages/chart/chart-page-init.js' %}"></script>
 
+    <!-- Start java_script -->
     {% block java_script %}
     {% endblock java_script %}
+    <!-- End java_script -->
 </body>
 
 </html>
