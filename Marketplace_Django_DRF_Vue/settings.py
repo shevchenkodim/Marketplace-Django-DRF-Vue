@@ -1,17 +1,15 @@
 import os
 from pathlib import Path
 
-# import environ
-# env = environ.Env(
-#     DEBUG=(bool, False)
-# )
-# environ.Env.read_env()
-# SECRET_KEY = env('SECRET_KEY')
-# DEBUG = env('DEBUG')
+import environ
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+environ.Env.read_env()
 
-SECRET_KEY = 'zl$(jd!p-ox@3tle_lfyt4@d+-c2+@c(%p-f-l(u=z6wajc*3('
+SECRET_KEY = env('SECRET_KEY')
 
-DEBUG = True
+DEBUG = env('DEBUG')
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 

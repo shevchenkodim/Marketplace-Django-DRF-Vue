@@ -10,6 +10,6 @@ __pycache__/
 *.pyc
 .idea
 
-.env
+Marketplace_Django_DRF_Vue/.env
 
 db.sqlite3
