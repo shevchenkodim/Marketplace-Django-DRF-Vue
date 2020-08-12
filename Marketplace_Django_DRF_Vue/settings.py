@@ -25,6 +25,8 @@ INSTALLED_APPS = [
 
     'clients',
     'common',
+
+    'mptt'
 ]
 
 MIDDLEWARE = [
