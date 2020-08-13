@@ -18,6 +18,9 @@ class CategoryModel(MPTTModel, SeoModel):
     # def get_absolute_url(self):
     #     return ('catalog_category', (), {'category_slug': self.slug})
 
+    def __str__(self):
+        return self.name
+
     class MPTTMeta:
         class Meta:
             db_table = 'categories'

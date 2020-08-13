@@ -1,10 +1,33 @@
 {% load static %}
+{% load mptt_tags %}
 
 <aside class="left-sidebar" data-sidebarbg="skin5">
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar">
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
+            <ul id="sidebarnav" class="p-t-30">
+
+                {% recursetree categories_list %}
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark"
+                           href="javascript:void(0)" aria-expanded="false">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span class="hide-menu">
+                                {{ node.name }}, {{ node.get_level }}
+                            </span>
+                        </a>
+
+                        {% if not node.is_leaf_node %}
+                            <ul aria-expanded="false"
+                                class="collapse  {% if node.get_level == 0 %}first-level
+                                     {% elif node.get_level == 1 %}second-level{% endif %}">
+                                {{ children }}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endrecursetree %}
+            </ul>
             <ul id="sidebarnav" class="p-t-30">
                 <li class="sidebar-item">
                     <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
