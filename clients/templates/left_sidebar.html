@@ -6,129 +6,29 @@
     <div class="scroll-sidebar">
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
-            <ul id="sidebarnav" class="p-t-30">
-
+            <ul id="sidebarnav" class="p-t-10">
                 {% recursetree categories_list %}
                     <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark"
-                           href="javascript:void(0)" aria-expanded="false">
-                            <i class="fas fa-mobile-alt"></i>
+                        {% if not node.is_leaf_node %}
+                            <a class="sidebar-link has-arrow waves-effect waves-dark"
+                               href="javascript:void(0)" aria-expanded="false">
+                        {% else %}
+                            <a href="#!" class="sidebar-link">
+                        {% endif %}
+                            <i class="{{ node.icon }}"></i>
                             <span class="hide-menu">
-                                {{ node.name }}, {{ node.get_level }}
+                                {{ node.name }}
                             </span>
                         </a>
-
                         {% if not node.is_leaf_node %}
                             <ul aria-expanded="false"
-                                class="collapse  {% if node.get_level == 0 %}first-level
+                                class="collapse {% if node.get_level == 0 %}first-level
                                      {% elif node.get_level == 1 %}second-level{% endif %}">
                                 {{ children }}
                             </ul>
                         {% endif %}
                     </li>
                 {% endrecursetree %}
-            </ul>
-            <ul id="sidebarnav" class="p-t-30">
-                <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                        <i class="fas fa-mobile-alt"></i>
-                        <span class="hide-menu">
-                            Смартфони, ТВ
-                        </span>
-                    </a>
-                    <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                                <i class="mdi mdi-all-inclusive"></i>
-                                <span class="hide-menu">
-                                    Смартфони
-                                </span>
-                            </a>
-                            <ul aria-expanded="false" class="collapse  second-level">
-                                <li class="sidebar-item">
-                                    <a href="#!" class="sidebar-link">
-                                        <i class="mdi mdi-all-inclusive"></i>
-                                        <span class="hide-menu">
-                                            Смартфони - 3
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="#!" class="sidebar-link">
-                                        <i class="mdi mdi-all-inclusive"></i>
-                                        <span class="hide-menu">
-                                            Кнопкові телефони - 3
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#!" class="sidebar-link">
-                                <i class="mdi mdi-all-inclusive"></i>
-                                <span class="hide-menu">
-                                    Кнопкові телефони
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#!" aria-expanded="false">
-                        <i class="fas fa-tv"></i>
-                        <span class="hide-menu">
-                            Побутова техніка
-                        </span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#!" aria-expanded="false">
-                        <i class="fas fa-people-carry"></i>
-                        <span class="hide-menu">
-                            Товари для дому
-                        </span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#!" aria-expanded="false">
-                        <i class="fas fa-car"></i>
-                        <span class="hide-menu">
-                            Інструменти та автотовари
-                        </span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#!" aria-expanded="false">
-                        <i class="ti-user"></i>
-                        <span class="hide-menu">
-                            Одяг, взуття та прикраси
-                        </span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#!" aria-expanded="false">
-                        <i class="fas fa-hand-holding-heart"></i>
-                        <span class="hide-menu">
-                            Краса та здоров’я
-                        </span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#!" aria-expanded="false">
-                        <i class="fas fa-futbol"></i>
-                        <span class="hide-menu">
-                            Спорт і захоплення
-                        </span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#!" aria-expanded="false">
-                        <i class="fas fa-book"></i>
-                        <span class="hide-menu">
-                            Канцтовари та книги
-                        </span>
-                    </a>
-                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->
