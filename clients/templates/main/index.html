@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!-- Start Slider -->
+    {% block main_slider %}
+        {% include 'main/main_slider.html' %}
+    {% endblock main_slider %}
+    <!-- End Slider -->
+
+    <!-- Start Novelty -->
+    {% block novelty %}
+        {% include 'main/novelty.html' %}
+    {% endblock novelty %}
+    <!-- End Novelty -->
+{% endblock content %}
