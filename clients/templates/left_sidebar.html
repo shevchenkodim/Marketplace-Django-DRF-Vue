@@ -13,7 +13,7 @@
                             <a class="sidebar-link has-arrow waves-effect waves-dark"
                                href="javascript:void(0)" aria-expanded="false">
                         {% else %}
-                            <a href="#!" class="sidebar-link">
+                            <a href="{{ node.get_absolute_url }}" class="sidebar-link">
                         {% endif %}
                             <i class="{{ node.icon }}"></i>
                             <span class="hide-menu">

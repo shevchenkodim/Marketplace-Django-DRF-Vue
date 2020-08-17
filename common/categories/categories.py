@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from common.seo.seo import SeoModel
 from mptt.models import MPTTModel, TreeForeignKey
 
@@ -14,9 +16,8 @@ class CategoryModel(MPTTModel, SeoModel):
     icon = models.CharField(max_length=50, blank=True)
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
-    # @models.permalink
-    # def get_absolute_url(self):
-    #     return ('catalog_category', (), {'category_slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('client:products_for_category_index', kwargs={'slug_c': self.slug})
 
     def __str__(self):
         return self.name
