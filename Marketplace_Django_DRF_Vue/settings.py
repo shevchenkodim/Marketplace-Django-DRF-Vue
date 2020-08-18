@@ -26,7 +26,8 @@ INSTALLED_APPS = [
     'clients',
     'common',
 
-    'mptt'
+    'mptt',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
