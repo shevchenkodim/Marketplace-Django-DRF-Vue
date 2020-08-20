@@ -12,12 +12,12 @@ from clients import settings
 from clients.view_modules.base import ModuleException, AppModule
 from clients.view_modules.index.index_view import IndexView
 
-#Need create settings file
-#url_start = settings.URL_STAFF
+url_start = settings.URL_CLIENT
 
 # Need add load function caategories/user right menu
 
-class StaffView:
+
+class ClientView:
 
     def __init__(self):
         self.app_module = AppModule()
@@ -29,17 +29,14 @@ class StaffView:
             view = self.index_view
         return view
 
-    # @staff_only
-    def staff_api(self, request):
+    def client_api(self, request):
         page_data = dict()
         (page_data, status) = self.do_request(request, page_data, True)
         response = Response(page_data, status=status)
         return response
 
-    # @staff_only
-    def staff_index(self, request, menus):
+    def client_index(self, request):
         page_data = dict()
-        page_data["staff_mode"] = True
         return self.do_request(request, page_data, False)
 
     def do_request(self, request, page_data, is_api=False):
@@ -59,54 +56,28 @@ class StaffView:
                 module = module[1:]
             if module.find("/") > 0:
                 module = module[:module.find("/")]
-            access, staff_module = self.app_module.access_module(client, module)
-            if access.get("can_access") and staff_module:
-                if staff_module.use_renderer:
-                    renderer = self.renderer_by_code(staff_module.use_renderer.code)
-                    if renderer:
-                        if is_api:
-                            matches = re.search(r"\/staff\/api\/" + module + "\/(?P<command>.*)(\?w+)?", request.path)
-                            if matches:
-                                command = matches["command"]
-                                (module_data, status) = renderer.do_api(request, module, command, client, access)
-                            else:
-                                module_data = {"error": "Method name is required"}
-                                status = HTTP_400_BAD_REQUEST
-                        else:
-                            (module_data, template) = renderer.do(request, module, client, access)
-                else:
-                    view = self.view_by_module(module)
-                    try:
-                        if is_api:
-                            matches = re.search(r"\/staff\/api\/" + module + "\/(?P<command>.*)(\?w+)?", request.path)
-                            if matches:
-                                command = matches["command"]
-                            (module_data, status) = view.do_api(request, client, access, command=command)
-                        else:
-                            (module_data, template) = view.do(request, client, access)
-                        if 'redirect' in module_data:
-                            return redirect(module_data.get("redirect"))
-                    except ModuleException:
-                        add_data = {"error": {"code": 500, "message": "Server Error"}, "staff_mode": True}
-                        return render(
-                            request,
-                            'staff_error.html',
-                            {**page_data, **add_data}
-                        )
+            access, client_module = self.app_module.access_module(client, module)
+            if access.get("can_access") and client_module:
+                view = self.view_by_module(module)
+                try:
+                    if is_api:
+                        matches = re.search(r"\/c\/api\/" + module + "\/(?P<command>.*)(\?w+)?", request.path)
+                        if matches:
+                            command = matches["command"]
+                        (module_data, status) = view.do_api(request, client, access, command=command)
+                    else:
+                        (module_data, template) = view.do(request, client, access)
+                    if 'redirect' in module_data:
+                        return redirect(module_data.get("redirect"))
+                except ModuleException:
+                    add_data = {"error": {"code": 500, "message": "Server Error"}}
+                    return render(request, '500.html', {**page_data, **add_data})
             else:
-                add_data = {"error": {"code": 403, "message": "Access denied"}, "staff_mode": True}
-                return render(
-                    request,
-                    'staff_error.html',
-                    {**page_data, **add_data}
-                )
+                add_data = {"error": {"code": 403, "message": "Access denied"}}
+                return render(request, '403.html', {**page_data, **add_data})
 
         page_data = {**module_data, **page_data}
         if is_api:
             return page_data, status
         else:
-            return render(
-                request,
-                (template if template else 'staff_index.html'),
-                page_data
-            )
+            return render(request, (template if template else 'base.html'), page_data)
