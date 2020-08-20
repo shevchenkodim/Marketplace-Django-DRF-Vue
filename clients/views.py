@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
-from common.sliders.main_sliders import MainCarouselModel
-from common.categories.categories import CategoryModel
+from common.clients.sliders.main_sliders import MainCarouselModel
+from common.clients.categories.categories import CategoryModel
 
 
 class IndexView(TemplateView):
