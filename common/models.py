@@ -5,16 +5,17 @@ from django.db import models
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 
-from common.auth.manager import UserManager
+from common.user_manager import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('email address', unique=True)
-    phone = models.CharField('phone', unique=True)
+    phone = models.CharField('phone', max_length=20, unique=True)
     first_name = models.CharField('first name', max_length=30, blank=True)
     last_name = models.CharField('last name', max_length=30, blank=True)
     date_joined = models.DateTimeField('date joined', auto_now_add=True)
     is_active = models.BooleanField('active', default=True)
+    is_staff = models.BooleanField('staff', default=False)
 
     objects = UserManager()
 
@@ -24,6 +25,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'user'
         verbose_name_plural = 'users'
+        db_table = 'auth_user'
 
     def get_full_name(self):
         '''

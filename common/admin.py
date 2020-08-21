@@ -3,7 +3,7 @@ from common.clients.categories.categories import CategoryModel
 from common.clients.sliders.main_sliders import MainCarouselModel
 from common.seller.seller import SellerModel
 from common.clients.brand.brand import BrandModel
-from common.auth.auth import User
+from common.models import User
 from common.clients.access.access import AccessRole, UserRole, ModuleAccess
 from common.clients.modules.modules import ClientModule
 

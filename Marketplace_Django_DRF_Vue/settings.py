@@ -42,7 +42,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Marketplace_Django_DRF_Vue.urls'
 
-AUTH_USER_MODEL = 'common.auth.auth.User'
+AUTH_USER_MODEL = 'common.User'
 
 TEMPLATES = [
     {

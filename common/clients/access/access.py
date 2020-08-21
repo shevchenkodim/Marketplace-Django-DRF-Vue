@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 from common.clients.modules.modules import ClientModule
 
@@ -16,7 +16,7 @@ class AccessRole(models.Model):
 
 
 class UserRole(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Користувач')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Користувач')
     role = models.ForeignKey(AccessRole, on_delete=models.CASCADE, verbose_name='Роль')
 
     def __str__(self):
