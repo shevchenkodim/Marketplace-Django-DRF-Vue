@@ -1,6 +1,7 @@
 from django.urls import path
 from clients.views import IndexView, ProductsForCategoriesView, ProductView
 
+
 app_name = 'client'
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
