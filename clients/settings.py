@@ -1,1 +1,1 @@
-URL_CLIENT = 'c'
+URL_CLIENT = 'test'

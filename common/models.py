@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.db import models
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
+from common.access.access import UserRole
 
 from common.user_manager import UserManager
 
@@ -45,3 +46,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         Sends an email to this User.
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    @staticmethod
+    def user_roles(user_id):
+        try:
+            user_role_list = UserRole.objects.filter(user_id=user_id)
+            return set(user_role.role for user_role in user_role_list)
+        except Exception as e:
+            return set()

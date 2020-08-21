@@ -5,14 +5,13 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.status import HTTP_404_NOT_FOUND, HTTP_400_BAD_REQUEST
 
-# create client model
-# from sf_common.models.application.client_model import Client
 from clients import settings
-
+from common.models import User
 from clients.view_modules.base import ModuleException, AppModule
 from clients.view_modules.index.index_view import IndexView
 
 url_start = settings.URL_CLIENT
+
 
 # Need add load function caategories/user right menu
 
@@ -43,10 +42,8 @@ class ClientView:
         module = request.path.replace(url_start, '')
         module_data = dict()
 
-        client_obj = request.session["client"]
-        client_id = client_obj.get("client_id", 0)
-        client = Client.objects.get(id=client_id)
-        client.load_roles()
+        client = request.user
+
         template = None
 
         if len(module) > 0:
@@ -61,7 +58,7 @@ class ClientView:
                 view = self.view_by_module(module)
                 try:
                     if is_api:
-                        matches = re.search(r"\/c\/api\/" + module + "\/(?P<command>.*)(\?w+)?", request.path)
+                        matches = re.search(r"\/test\/api\/" + module + "\/(?P<command>.*)(\?w+)?", request.path)
                         if matches:
                             command = matches["command"]
                         (module_data, status) = view.do_api(request, client, access, command=command)

@@ -1,7 +1,8 @@
 from django.core.exceptions import ValidationError
 
-from common.clients.access.access import ModuleAccess
-from common.clients.modules.modules import ClientModule
+from common.access.access import AccessRole
+from common.clients.access.access import ModuleAccess, ClientModule
+from common.models import User
 
 
 class AppModule(object):
@@ -21,9 +22,11 @@ class AppModule(object):
 
     def access_module(self, client, module_name):
 
-        # Для не зарегистрированих додати role no user
+        if client:
+            user_roles = User.user_roles(client.id)
+        else:
+            user_roles = set(AccessRole.objects.get(code_role='new_client'))
 
-        user_roles = client.user_roles
         try:
             client_module = ClientModule.objects.get(code=module_name)
         except ClientModule.DoesNotExist:
