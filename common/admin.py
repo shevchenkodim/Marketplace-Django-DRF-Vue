@@ -4,8 +4,8 @@ from common.clients.sliders.main_sliders import MainCarouselModel
 from common.seller.seller import SellerModel
 from common.clients.brand.brand import BrandModel
 from common.models import User
-from common.clients.access.access import AccessRole, UserRole, ModuleAccess
-from common.clients.modules.modules import ClientModule
+from common.access.access import AccessRole, UserRole
+from common.clients.access.access import ClientModule, ModuleAccess
 
 
 @admin.register(User)
