@@ -1,9 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block css %}
+    <style>
+        .page-item {
+            padding: 3px;
+            margin: 3px;
+            font-size: 15px;
+        }
+        .page-link {
+            padding: 15px;
+        }
+    </style>
+    <style>
+        .block{
+            margin-right: .5rem!important;
+            position: absolute;
+            z-index: 111;
+            opacity: 1;
+        }
+    </style>
+{% endblock css %}
 
 {% block content %}
-
+<div id="app">
+    {% csrf_token %}
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb bg-light pb-0 pl-0 pt-3 mb-3">
             <li class="breadcrumb-item">
@@ -27,16 +48,6 @@
 
     {% include 'products_for_categories/products.html' %}
 
-    <style>
-        .page-item {
-            padding: 3px;
-            margin: 3px;
-            font-size: 15px;
-        }
-        .page-link {
-            padding: 15px;
-        }
-    </style>
     <div class="d-flex justify-content-center align-items-center">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
@@ -60,5 +71,23 @@
           </ul>
         </nav>
     </div>
-
+</div>
 {% endblock content %}
+
+{% block java_script %}
+<script>
+    Vue.config.devtools = true
+    window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = Vue;
+     let app = new Vue({
+        el: '#app',
+        delimiters: ['[[', ']]'],
+        data: {
+            hover1: false,
+            hover2: false,
+            hover3: false,
+            contactCSRF: document.getElementsByName("csrfmiddlewaretoken")[0].value,
+        },
+        methods: {}
+    });
+</script>
+{% endblock java_script %}

@@ -5,7 +5,6 @@ from common.seller.seller import SellerModel
 from common.clients.brand.brand import BrandModel
 from common.models import User
 from common.access.access import AccessRole, UserRole
-from common.clients.access.access import ClientModule, ModuleAccess
 
 
 @admin.register(User)
@@ -21,16 +20,6 @@ class AccessRoleAdmin(admin.ModelAdmin):
 @admin.register(UserRole)
 class UserRoleAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'role')
-
-
-@admin.register(ClientModule)
-class ClientModuleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'code', 'name')
-
-
-@admin.register(ModuleAccess)
-class ClientModuleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'module', 'role', 'can_access', 'can_change', 'can_remove')
 
 
 @admin.register(CategoryModel)
