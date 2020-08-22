@@ -2,31 +2,13 @@
 {% load static %}
 
 {% block css %}
-    <style>
-        .page-item {
-            padding: 3px;
-            margin: 3px;
-            font-size: 15px;
-        }
-        .page-link {
-            padding: 15px;
-        }
-    </style>
-    <style>
-        .block{
-            margin-right: .5rem!important;
-            position: absolute;
-            z-index: 111;
-            opacity: 1;
-        }
-    </style>
 {% endblock css %}
 
 {% block content %}
 <div id="app">
     {% csrf_token %}
     <nav aria-label="breadcrumb">
-        <ul class="breadcrumb bg-light pb-0 pl-0 pt-3 mb-3">
+        <ul class="breadcrumb bg-light pb-3 pl-0 pt-3 mb-0">
             <li class="breadcrumb-item">
                 <h4>
                     <a href="{% url 'client:index' %}" class="text-dark">
@@ -43,8 +25,125 @@
         </ul>
     </nav>
 
-    <h4>{{ category.name }}</h4>
+    <div class="d-flex align-items-center justify-content-between">
+        <h4>{{ category.name }}</h4>
+        <div class="form-row">
+            <div class="form-group pr-3">
+                <select class="form-control">
+                  <option>Від дешевших</option>
+                  <option>Від дорогих</option>
+                  <option>За рейтингом</option>
+                  <option>Новинки</option>
+                </select>
+            </div>
+            <div class="form-group pr-1">
+                <button class="btn btn-success">
+                    <i class="fas fa-filter"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
+
+    <div>
+        <h5>
+            <a href="#!" v-on:click="filter = !filter" class="d-flex align-items-center text-secondary">
+                Більш розширений фільтер для пошуку
+                <i class="fas pl-2" v-bind:class="{'fa-angle-down': !filter, 'fa-angle-up': filter }"></i>
+            </a>
+        </h5>
+        <div v-if="filter" class="card border" style="border-radius: 10px;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>Ціна</h6>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group">
+                                    <input value="99" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2">
+                                </div>
+                            </div>
+                            <div class="col-2 text-center d-flex align-items-center">
+                                <i class="fas fa-minus"></i>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group">
+                                    <input value="192560" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <h6>Країна виробник</h6>
+                        <select class="form-control" style="width: 100%; height:36px;">
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="IN">Indiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <h6>Колір</h6>
+                        <div class="row d-flex align-items-center pt-1">
+                            <div class="col-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span class="badge badge-danger">Red</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="custom-control custom-checkbox mr-sm-2">
+                                            <input type="checkbox" class="custom-control-input" id="customControlAutosizing1">
+                                            <label class="custom-control-label" for="customControlAutosizing1"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span class="badge badge-primary">Blue</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="custom-control custom-checkbox mr-sm-2">
+                                            <input type="checkbox" class="custom-control-input" id="customControlAutosizing2">
+                                            <label class="custom-control-label" for="customControlAutosizing2"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <span class="badge badge-dark">Dark</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="custom-control custom-checkbox mr-sm-2">
+                                            <input type="checkbox" class="custom-control-input" id="customControlAutosizing3">
+                                            <label class="custom-control-label" for="customControlAutosizing3"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-end">
+                    <button class="btn btn-success">
+                        Пошук <i class="fas fa-filter"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {% include 'products_for_categories/products.html' %}
 
@@ -83,8 +182,7 @@
         delimiters: ['[[', ']]'],
         data: {
             hover1: false,
-            hover2: false,
-            hover3: false,
+            filter: false,
             contactCSRF: document.getElementsByName("csrfmiddlewaretoken")[0].value,
         },
         methods: {}
