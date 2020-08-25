@@ -7,23 +7,8 @@
 {% block content %}
 <div id="app">
     {% csrf_token %}
-    <nav aria-label="breadcrumb">
-        <ul class="breadcrumb bg-light pb-3 pl-0 pt-3 mb-0">
-            <li class="breadcrumb-item">
-                <h4>
-                    <a href="{% url 'client:index' %}" class="text-dark">
-                        <i class="fas fa-home"></i>
-                    </a>
-                </h4>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">
-                 <a href="#!" class="text-dark">{{ category.name }}</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">
-                 <a href="#!" class="text-dark">{{ category.name }}</a>
-            </li>
-        </ul>
-    </nav>
+
+    {% include 'breadcrumb.html' %}
 
     <div class="d-flex align-items-center justify-content-between">
         <h4>{{ category.name }}</h4>
