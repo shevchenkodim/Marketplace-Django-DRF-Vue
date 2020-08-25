@@ -52,7 +52,21 @@
                 <i class="fas pl-2" v-bind:class="{'fa-angle-down': !filter, 'fa-angle-up': filter }"></i>
             </a>
         </h5>
-        <div v-if="filter" class="card border" style="border-radius: 10px;">
+
+        <div>
+            Знайдено 33 товари
+            <button type="button" class="btn btn-outline-info mx-1" style="border-radius: 10px;">
+                Червоний
+                <i class="fa fa-times pl-1" aria-hidden="true"></i>
+            </button>
+
+            <button type="button" class="btn btn-outline-info" style="border-radius: 10px;">
+                Україна
+                <i class="fa fa-times pl-1" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div v-if="filter" class="card border mt-2" style="border-radius: 10px;">
             <div class="card-body">
                 <div class="row">
                     <div class="col-4">
