@@ -14,3 +14,35 @@
     z-index: 111;
     opacity: 1;
 }
+
+.my-color-red {
+    text-color: #de0015;
+}
+.my-color-orange {
+    text-color: #f16d00;
+}
+.my-color-green {
+    text-color: #098c27;
+}
+.my-color-blue {
+    text-color: #007bff;
+}
+.my-color-dark {
+    text-color: #000000;
+}
+
+.my-bg-color-red {
+    background-color: #de0015;
+}
+.my-bg-color-orange {
+    background-color: #f16d00;
+}
+.my-bg-color-green {
+    background-color: #098c27;
+}
+.my-bg-color-blue {
+    background-color: #007bff;
+}
+.my-bg-color-dark {
+    background-color: #000000;
+}
