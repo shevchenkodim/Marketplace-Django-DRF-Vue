@@ -1,7 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block css %}
+{% endblock css %}
 
 {% block content %}
-    {% include 'breadcrumb.html' %}
+    <h4>{{ product }}&ensp;<span class="text-muted">(Код: 0000000001)</span></h4>
+
+    <div class="row mt-3">
+        <div class="col-6">
+            {% include 'product/slider.html' %}
+        </div>
+        <div class="col-md-4">
+            <div class="border rounded">
+                <div style="background-color: #17a2b8!important;">
+                    <div class="p-3 text-center">
+                        <h4 class="p-0 m-0" style="text-shadow: 0 1px 1px; color: #fff!important;">
+                            TEST COMPANY NAME
+                        </h4>
+                    </div>
+                    <div class="text-center pb-3">
+                        <img style="border-radius: 50%;"
+                             height="100px;"
+                             src="https://www.designhill.com/resize_img.php?atyp=page_file&pth=ft_ca_ct||117||contestfile_1&flp=1554116576-13511971185ca1efe0bcd5a0-26602492.jpg">
+                    </div>
+                </div>
+                <div>
+                    sdsdf
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
+
+{% block java_script %}
+{% endblock java_script %}
