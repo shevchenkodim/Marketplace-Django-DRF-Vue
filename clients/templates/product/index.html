@@ -5,14 +5,14 @@
 {% endblock css %}
 
 {% block content %}
-    <h4>{{ product }}</h4>
+    <h3>{{ product }}</h3>
 
     <div class="row mt-3">
         <div class="col-6">
             {% include 'product/slider.html' %}
 
             <div class="mt-3 mb-3">
-                <h4>Опис товару</h4>
+                <h3>Опис товару</h3>
                 <div>
                     <b>Redmi Note 9 Pro</b>
                     <p>Продуктивність звіра.</p>
@@ -35,13 +35,50 @@
                     </p>
                 </div>
             </div>
-            <div >
-
+            <div class="mb-3">
+                <h3>Характеристики</h3>
+                <div class="row">
+                    <div class="col-6">
+                        Роздільна здатність відео
+                    </div>
+                    <div class="col-6">
+                        <div>2400 x 1080</div>
+                    </div>
+                </div>
+                <hr class="mt-2 mb-2">
+                <div class="row">
+                    <div class="col-6">
+                        Оперативна пам'ять
+                    </div>
+                    <div class="col-6">
+                        <div>6 ГБ</div>
+                    </div>
+                </div>
+                <hr class="mt-2 mb-2">
+                <div class="row">
+                    <div class="col-6">
+                        Діагональ екрана
+                    </div>
+                    <div class="col-6">
+                        <div>6.67</div>
+                    </div>
+                </div>
+                <hr class="mt-2 mb-2">
+                <div class="row">
+                    <div class="col-6">
+                        Стандарт зв'язку
+                    </div>
+                    <div class="col-6">
+                        <div>2G (GPRS/EDGE)</div>
+                        <div>3G (WCDMA/UMTS/HSPA)</div>
+                        <div>4G (LTE)</div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-6">
             <div class="mb-2">
-                <span class="text-muted">Код: 0000000001</span>
+                <span class="text-dark">Код: 0000000001</span>
             </div>
             
             <div class="mb-3">
@@ -75,7 +112,7 @@
                         <img height="70" src="https://www.seller.elala.in/images/left-seller-banner-img.png">
                     </div>
                     <div class="text-center">
-                        <b>Інтернет - магазин "Active life"</b>
+                        <h5 class="card-title mb-0">Інтернет - магазин "Active life"</h5>
                     </div>
                 </div>
                 <hr class="p-0 m-0">
@@ -125,7 +162,7 @@
 
             <div class="mb-3 border">
                 <div class="p-2">
-                    Доступні способи доставки
+                    <h6 class="card-title mb-0">Доступні способи доставки</h6>
                 </div>
                 <hr class="p-0 m-0">
                 <div class="p-2">
@@ -166,17 +203,40 @@
 
             <div class="mb-3 border">
                 <div class="p-2">
-                    Способи оплати
+                    <h6 class="card-title mb-0">Способи оплати</h6>
                 </div>
                 <hr class="p-0 m-0">
                 <div class="p-2">
-                    Готівкою, Картою онлайн, Акційна оплата карткою Visa, Google Pay, Оплата через Masterpass
+                    <div class="row d-flex align-items-center">
+                        <div class="col-1 text-center">
+                            <i class="far fa-money-bill-alt"></i>
+                        </div>
+                        <div class="col-11">
+                            Готівкою
+                        </div>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                        <div class="col-1 text-center">
+                            <i class="fab fa-cc-visa"></i>
+                        </div>
+                        <div class="col-11">
+                            Оплата карткою Visa
+                        </div>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                        <div class="col-1 text-center">
+                            <i class="fab fa-cc-mastercard"></i>
+                        </div>
+                        <div class="col-11">
+                            Оплата карткою MasterCard
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="mb-3 border">
                 <div class="p-2">
-                    Гарантія
+                    <h6 class="card-title mb-0">Гарантія</h6>
                 </div>
                 <hr class="p-0 m-0">
                 <div class="p-2">
