@@ -1,8 +1,8 @@
 from django.contrib import admin
-from common.clients.categories.categories import CategoryModel
+from common.products.categories.categories import CategoryModel
 from common.clients.sliders.main_sliders import MainCarouselModel
 from common.seller.seller import SellerModel
-from common.clients.brand.brand import BrandModel
+from common.products.brand.brand import BrandModel
 from common.models import User
 from common.access.access import AccessRole, UserRole
 

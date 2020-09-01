@@ -1,4 +1,4 @@
-from common.clients.categories.categories import CategoryModel
+from common.products.categories.categories import CategoryModel
 
 
 def client_data_context(request):
