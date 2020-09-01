@@ -28,7 +28,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static '/assets/images/favicon.png' %}">
     <!-- Custom CSS -->
     <link href="{% static '/assets/libs/flot/css/float-chart.css' %}" rel="stylesheet">
-    <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <link href="{% static '/css/fotorama.css' %}/" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{% static '/css/style.min.css' %}" rel="stylesheet">
@@ -43,7 +43,7 @@
 </head>
 
 <body>
-    <!-- Preloader - sstyle you can find in spinners.cs -->
+    <!-- Preloader - style you can find in spinners.cs -->
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
@@ -53,11 +53,11 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <div id="main-wrapper">
         <!-- Topbar header - style you can find in pages.scss -->
-        {% include 'top_navbar.html' %}
+        {% include 'base/top_navbar.html' %}
         <!-- End Topbar header -->
 
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        {% include 'left_sidebar.html' %}
+        {% include 'base/left_sidebar.html' %}
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
 
         <!-- Page wrapper  -->
@@ -68,7 +68,7 @@
                 {% block medium %}
 
                     {% block breadcrumb %}
-                        {% include 'breadcrumb.html' %}
+                        {% include 'base/breadcrumb.html' %}
                     {% endblock %}
 
                     <!-- Start Content -->
@@ -78,13 +78,13 @@
 
                     <!-- Start Social Network -->
                     {% block info_social_network %}
-                        {% include 'info_social_network.html' %}
+                        {% include 'base/info_social_network.html' %}
                     {% endblock info_social_network %}
                     <!-- End Social Network -->
 
                     <!-- Start Info -->
                     {% block info %}
-                        {% include 'info.html' %}
+                        {% include 'base/info.html' %}
                     {% endblock info %}
                     <!-- End Info -->
 
@@ -94,7 +94,7 @@
 
             <!-- Start Footer -->
             {% block footer %}
-                {% include 'footer.html' %}
+                {% include 'base/footer.html' %}
             {% endblock footer %}
             <!-- End Footer -->
 
@@ -128,7 +128,7 @@
     <script src="{% static '/assets/libs/flot/jquery.flot.crosshair.js' %}"></script>
     <script src="{% static '/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
     <script src="{% static '/js/pages/chart/chart-page-init.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <script src="{% static '/js/fotorama.js' %}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 

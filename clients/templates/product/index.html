@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base/base.html' %}
 {% load static %}
 
 {% block css %}
@@ -11,71 +11,9 @@
         <div class="col-6">
             {% include 'product/slider.html' %}
 
-            <div class="mt-3 mb-3">
-                <h3>Опис товару</h3>
-                <div>
-                    <b>Redmi Note 9 Pro</b>
-                    <p>Продуктивність звіра.</p>
-                </div>
-                <div>
-                    <b>Професійна якість світлин</b>
-                    <p>
-                        Основна камера Redmi Note 9 Pro складається з чотирьох датчиків зображення,
-                        включно з головним модулем із роздільною здатністю 64 Мп.
-                        Відчуйте на власному досвіді, що означає новий рівень мобільної фотографії,
-                        і робіть професійні знімки одним натисненням.
-                    </p>
-                </div>
-                <div>
-                    <b>Широкий кут і макрознімання</b>
-                    <p>
-                        Ширококутний 8 Мп об'єктив із кутом огляду 119 градусів дає змогу вмістити в
-                        кадр ще більше об'єктів і створює приголомшливі панорамні знімки.
-                        Камера для макрознімання 5 Мп робить чіткі та деталізовані фото.
-                    </p>
-                </div>
-            </div>
+            {% include 'product/description.html' %}
 
-            <div class="mb-3">
-                <h3>Характеристики</h3>
-                <div class="row">
-                    <div class="col-6">
-                        Роздільна здатність відео
-                    </div>
-                    <div class="col-6">
-                        <div>2400 x 1080</div>
-                    </div>
-                </div>
-                <hr class="mt-2 mb-2">
-                <div class="row">
-                    <div class="col-6">
-                        Оперативна пам'ять
-                    </div>
-                    <div class="col-6">
-                        <div>6 ГБ</div>
-                    </div>
-                </div>
-                <hr class="mt-2 mb-2">
-                <div class="row">
-                    <div class="col-6">
-                        Діагональ екрана
-                    </div>
-                    <div class="col-6">
-                        <div>6.67</div>
-                    </div>
-                </div>
-                <hr class="mt-2 mb-2">
-                <div class="row">
-                    <div class="col-6">
-                        Стандарт зв'язку
-                    </div>
-                    <div class="col-6">
-                        <div>2G (GPRS/EDGE)</div>
-                        <div>3G (WCDMA/UMTS/HSPA)</div>
-                        <div>4G (LTE)</div>
-                    </div>
-                </div>
-            </div>
+            {% include 'product/characteristics.html' %}
         </div>
         <div class="col-6">
             <div class="mb-2">
@@ -83,17 +21,17 @@
             </div>
 
             <div class="mb-3">
-                            <span>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
-                                <i class="far fa-star text-warning"></i>
-                            </span>
-                            <span class="pl-2">
-                                3 відгуки
-                            </span>
-                        </div>
+                <span>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="far fa-star text-warning"></i>
+                </span>
+                <span class="pl-2">
+                    3 відгуки
+                </span>
+            </div>
             
             <div class="mb-3">
                 <span class="badge badge-success">
@@ -119,269 +57,13 @@
                 </div>
             </div>
 
-            <div class="mb-3 border">
-                <div class="p-2">
-                    <div class="text-center">
-                        <img height="70" src="https://www.seller.elala.in/images/left-seller-banner-img.png">
-                    </div>
-                    <div class="text-center">
-                        <h5 class="card-title mb-0">Інтернет - магазин "Active life"</h5>
-                    </div>
-                </div>
-                <hr class="p-0 m-0">
-                <div class="p-2">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-1 text-center">
-                            <i class="fas fa-external-link-square-alt"></i>
-                        </div>
-                        <div class="col-11">
-                            <a href="#!">Сторінка продавця</a>
-                        </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                        <div class="col-1 text-center">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="col-11">
-                            Місце знаходження: <a href="#!">м. Київ, Зочих 28</a>
-                        </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                        <div class="col-1 text-center">
-                            <i class="far fa-clock"></i>
-                        </div>
-                        <div class="col-11">
-                            Графік роботи <i class="fas fa-angle-down"></i>
-                        </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                        <div class="col-1 text-center">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="col-11">
-                            <a href="#!">+380 показати номер</a>
-                        </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                        <div class="col-1 text-center">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="col-11">
-                            <a href="#!">test@gmail.com</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include 'product/seller.html' %}
 
-            <div class="mb-3 border">
-                <div class="p-2">
-                    <h6 class="card-title mb-0">Доступні способи доставки</h6>
-                </div>
-                <hr class="p-0 m-0">
-                <div class="p-2">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-1 text-center">
-                            <i class="fas fa-arrows-alt"></i>
-                        </div>
-                        <div class="col-11">
-                            Самовивіз з Нової Пошти
-                        </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                        <div class="col-1 text-center">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="col-11">
-                            Самовивіз з УкрПошти
-                        </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                        <div class="col-1 text-center">
-                            <i class="fas fa-box"></i>
-                        </div>
-                        <div class="col-11">
-                            Самовивіз з JustIn
-                        </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                        <div class="col-1 text-center">
-                            <i class="fas fa-shipping-fast"></i>
-                        </div>
-                        <div class="col-11">
-                            Доставка від продавця
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-3 border">
-                <div class="p-2">
-                    <h6 class="card-title mb-0">Способи оплати</h6>
-                </div>
-                <hr class="p-0 m-0">
-                <div class="p-2">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-1 text-center">
-                            <i class="far fa-money-bill-alt"></i>
-                        </div>
-                        <div class="col-11">
-                            Готівкою
-                        </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                        <div class="col-1 text-center">
-                            <i class="fab fa-cc-visa"></i>
-                        </div>
-                        <div class="col-11">
-                            Оплата карткою Visa
-                        </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                        <div class="col-1 text-center">
-                            <i class="fab fa-cc-mastercard"></i>
-                        </div>
-                        <div class="col-11">
-                            Оплата карткою MasterCard
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-3 border">
-                <div class="p-2">
-                    <h6 class="card-title mb-0">Гарантія</h6>
-                </div>
-                <hr class="p-0 m-0">
-                <div class="p-2">
-                    12 місяців
-                    <br>
-                    Обмін/повернення товару впродовж 14 днів
-                </div>
-            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            <div class="mb-3">
-                <h3>Відгуки</h3>
-                <div class="comment-widgets scrollable ps-container ps-theme-default"
-                     data-ps-id="aa2cada3-0530-41cd-6bee-a179f6aab841">
-                    <!-- Comment Row -->
-                    <div class="d-flex flex-row comment-row m-t-0">
-                        <div class="p-2"><img src="https://www.wrappixel.com/demos/free-admin-templates/matrix-admin-bt4/assets/images/users/4.jpg" alt="user" width="50" class="rounded-circle"></div>
-                        <div class="comment-text w-100">
-                            <div class="d-flex justify-content-between">
-                                <h6 class="font-medium">James Anderson</h6>
-                                <div>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="far fa-star text-warning"></i>
-                                </div>
-                            </div>
-
-                            <span class="m-b-15 d-block">
-                                Lorem Ipsum is simply dummy text of the
-                                printing and type setting industry.
-                            </span>
-                            <div class="comment-footer">
-                                <span class="text-muted float-right">
-                                    April 14, 2016
-                                </span>
-                                <button type="button" class="btn btn-success btn-sm">
-                                    Відповісти
-                                </button>
-                                <span class="pl-2 pr-2">
-                                    <i class="far fa-thumbs-up"></i> 10
-                                </span>
-                                <span class="pl-2 pr-2">
-                                    <i class="far fa-thumbs-down"></i> 0
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Comment Row -->
-                    <div class="d-flex flex-row comment-row">
-                                            <div class="p-2"><img src="https://www.wrappixel.com/demos/free-admin-templates/matrix-admin-bt4/assets/images/users/4.jpg" alt="user" width="50" class="rounded-circle"></div>
-                                            <div class="comment-text w-100">
-                                                <div class="d-flex justify-content-between">
-                                                    <h6 class="font-medium">James Anderson</h6>
-                                                    <div>
-                                                        <i class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-warning"></i>
-                                                        <i class="far fa-star text-warning"></i>
-                                                    </div>
-                                                </div>
-
-                                                <span class="m-b-15 d-block">
-                                                    Lorem Ipsum is simply dummy text of the
-                                                    printing and type setting industry.
-                                                </span>
-                                                <div class="comment-footer">
-                                                    <span class="text-muted float-right">
-                                                        April 14, 2016
-                                                    </span>
-                                                    <button type="button" class="btn btn-success btn-sm">
-                                                        Відповісти
-                                                    </button>
-                                                    <span class="pl-2 pr-2">
-                                                        <i class="far fa-thumbs-up"></i> 10
-                                                    </span>
-                                                    <span class="pl-2 pr-2">
-                                                        <i class="far fa-thumbs-down"></i> 0
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                    <!-- Comment Row -->
-                    <div class="d-flex flex-row comment-row">
-                                            <div class="p-2"><img src="https://www.wrappixel.com/demos/free-admin-templates/matrix-admin-bt4/assets/images/users/4.jpg" alt="user" width="50" class="rounded-circle"></div>
-                                            <div class="comment-text w-100">
-                                                <div class="d-flex justify-content-between">
-                                                    <h6 class="font-medium">James Anderson</h6>
-                                                    <div>
-                                                        <i class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-warning"></i>
-                                                        <i class="fas fa-star text-warning"></i>
-                                                        <i class="far fa-star text-warning"></i>
-                                                    </div>
-                                                </div>
-
-                                                <span class="m-b-15 d-block">
-                                                    Lorem Ipsum is simply dummy text of the
-                                                    printing and type setting industry.
-                                                </span>
-                                                <div class="comment-footer">
-                                                    <span class="text-muted float-right">
-                                                        April 14, 2016
-                                                    </span>
-                                                    <button type="button" class="btn btn-success btn-sm">
-                                                        Відповісти
-                                                    </button>
-                                                    <span class="pl-2 pr-2">
-                                                        <i class="far fa-thumbs-up"></i> 10
-                                                    </span>
-                                                    <span class="pl-2 pr-2">
-                                                        <i class="far fa-thumbs-down"></i> 0
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                    <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
-                        <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
-                        </div>
-                    </div>
-                    <div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;">
-                        <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include 'product/comments.html' %}
         </div>
         <div class="col-6"></div>
     </div>
