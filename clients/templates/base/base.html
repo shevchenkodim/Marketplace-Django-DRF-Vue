@@ -34,8 +34,6 @@
     <link href="{% static '/css/style.min.css' %}" rel="stylesheet">
     <link href="{% static '/css/main_style.css' %}" rel="stylesheet">
 
-
-
     <!-- Start block css -->
     {% block css %}
     {% endblock css %}
@@ -43,83 +41,78 @@
 </head>
 
 <body>
-    <!-- Preloader - style you can find in spinners.cs -->
-    <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
-        </div>
-    </div>
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <div id="main-wrapper">
-        <!-- Topbar header - style you can find in pages.scss -->
-        {% include 'base/top_navbar.html' %}
-        <!-- End Topbar header -->
+    <div id="app">
+        {% csrf_token %}
 
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        {% include 'base/left_sidebar.html' %}
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-
-        <!-- Page wrapper  -->
-        <div class="page-wrapper bg-light">
-            <div class="pl-5 pr-5">
-
-                <!-- Start Medium -->
-                {% block medium %}
-
-                    {% block breadcrumb %}
-                        {% include 'base/breadcrumb.html' %}
-                    {% endblock %}
-
-                    <!-- Start Content -->
-                    {% block content %}
-                    {% endblock content %}
-                    <!-- End Content -->
-
-                    <!-- Start Social Network -->
-                    {% block info_social_network %}
-                        {% include 'base/info_social_network.html' %}
-                    {% endblock info_social_network %}
-                    <!-- End Social Network -->
-
-                    <!-- Start Info -->
-                    {% block info %}
-                        {% include 'base/info.html' %}
-                    {% endblock info %}
-                    <!-- End Info -->
-
-                {% endblock medium %}
-                <!-- End Medium -->
+        <!-- Preloader - style you can find in spinners.cs -->
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div class="lds-pos"></div>
+                <div class="lds-pos"></div>
             </div>
-
-            <!-- Start Footer -->
-            {% block footer %}
-                {% include 'base/footer.html' %}
-            {% endblock footer %}
-            <!-- End Footer -->
-
         </div>
-        <!-- End Page wrapper  -->
-    </div>
-    <!-- End Wrapper -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <div id="main-wrapper">
+            <!-- Topbar header - style you can find in pages.scss -->
+            {% include 'base/top_navbar.html' %}
+            <!-- End Topbar header -->
 
+            <!-- Left Sidebar - style you can find in sidebar.scss  -->
+            {% include 'base/left_sidebar.html' %}
+            <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+
+            <!-- Page wrapper  -->
+            <div class="page-wrapper bg-light">
+                <div class="pl-5 pr-5">
+
+                    <!-- Start Medium -->
+                    {% block medium %}
+
+                        {% block breadcrumb %}
+                            {% include 'base/breadcrumb.html' %}
+                        {% endblock %}
+
+                        <!-- Start Content -->
+                        {% block content %}
+                        {% endblock content %}
+                        <!-- End Content -->
+
+                        <!-- Start Social Network -->
+                        {% block info_social_network %}
+                            {% include 'base/info_social_network.html' %}
+                        {% endblock info_social_network %}
+                        <!-- End Social Network -->
+
+                        <!-- Start Info -->
+                        {% block info %}
+                            {% include 'base/info.html' %}
+                        {% endblock info %}
+                        <!-- End Info -->
+
+                    {% endblock medium %}
+                    <!-- End Medium -->
+                </div>
+
+                <!-- Start Footer -->
+                {% block footer %}
+                    {% include 'base/footer.html' %}
+                {% endblock footer %}
+                <!-- End Footer -->
+
+            </div>
+            <!-- End Page wrapper  -->
+        </div>
+        <!-- End Wrapper -->
+    </div>
     <!-- All Jquery -->
     <script src="{% static '/assets/libs/jquery/dist/jquery.min.js' %}"></script>
-    <!-- Bootstrap tether Core JavaScript -->
     <script src="{% static '/assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
     <script src="{% static '/assets/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-
     <script src="{% static '/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js' %}"></script>
     <script src="{% static '/assets/extra-libs/sparkline/sparkline.js' %}"></script>
-    <!--Wave Effects -->
     <script src="{% static '/js/waves.js' %}"></script>
-    <!--Menu sidebar -->
     <script src="{% static '/js/sidebarmenu.js' %}"></script>
-    <!--Custom JavaScript -->
     <script src="{% static '/js/custom.min.js' %}"></script>
-    <!--This page JavaScript -->
-    <!-- <script src="../../dist/js/pages/dashboards/dashboard1.js"></script> -->
-    <!-- Charts js Files -->
     <script src="{% static '/assets/libs/flot/excanvas.js' %}"></script>
     <script src="{% static '/assets/libs/flot/jquery.flot.js' %}"></script>
     <script src="{% static '/assets/libs/flot/jquery.flot.pie.js' %}"></script>
@@ -130,12 +123,30 @@
     <script src="{% static '/js/pages/chart/chart-page-init.js' %}"></script>
     <script src="{% static '/js/fotorama.js' %}"></script>
 
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Start Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- End Vue.js -->
 
-    <!-- Start java_script -->
+    <script>
+        Vue.config.devtools = true
+        window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = Vue;
+
+         let app = new Vue({
+            el: '#app',
+            delimiters: ['[[', ']]'],
+            data: {
+                hover1: false,
+                filter: false,
+                contactCSRF: document.getElementsByName("csrfmiddlewaretoken")[0].value,
+            },
+            methods: {}
+        });
+    </script>
+
     {% block java_script %}
     {% endblock java_script %}
-    <!-- End java_script -->
 </body>
 
 </html>
