@@ -30,7 +30,7 @@ class Product(SeoModel):
     #     return ''
 
     def __str__(self):
-        return self.name
+        return self.product_id
 
     class Meta:
         db_table = 'product'

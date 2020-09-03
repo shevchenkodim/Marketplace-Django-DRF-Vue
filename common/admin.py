@@ -3,6 +3,7 @@ from common.products.categories.categories import CategoryModel
 from common.clients.sliders.main_sliders import MainCarouselModel
 from common.products.characteristic.characteristic import CharacteristicAttributes, CharacteristicProduct
 from common.products.product.product import Product
+from common.products.product.product_image import ProductImage
 from common.seller.seller import SellerModel
 from common.models import User
 from common.access.access import AccessRole, UserRole
@@ -12,6 +13,11 @@ from common.dictionaries.dictionaries import BrandDict, UnitDict, Characteristic
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'code')
+
+
+@admin.register(ProductImage)
+class ProductImageAdmin(admin.ModelAdmin):
+    list_display = ('id', 'image', 'item_alt', 'product_id')
 
 
 @admin.register(UnitDict)
