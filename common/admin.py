@@ -1,10 +1,37 @@
 from django.contrib import admin
 from common.products.categories.categories import CategoryModel
 from common.clients.sliders.main_sliders import MainCarouselModel
+from common.products.characteristic.characteristic import CharacteristicAttributes, CharacteristicProduct
+from common.products.product.product import Product
 from common.seller.seller import SellerModel
-from common.products.brand.brand import BrandModel
 from common.models import User
 from common.access.access import AccessRole, UserRole
+from common.dictionaries.dictionaries import BrandDict, UnitDict, CharacteristicHandbookDict
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'code')
+
+
+@admin.register(UnitDict)
+class UnitDictAdmin(admin.ModelAdmin):
+    list_display = ('id', 'value', 'code')
+
+
+@admin.register(CharacteristicHandbookDict)
+class CharacteristicHandbookDictAdmin(admin.ModelAdmin):
+    list_display = ('id', 'value', 'code', 'category_id')
+
+
+@admin.register(CharacteristicAttributes)
+class CharacteristicAttributesAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'field_type')
+
+
+@admin.register(CharacteristicProduct)
+class CharacteristicProductAdmin(admin.ModelAdmin):
+    list_display = ('id', 'value', 'product_id', 'attribute_id')
 
 
 @admin.register(User)
@@ -37,6 +64,6 @@ class SellerModelAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'code_name', 'slug')
 
 
-@admin.register(BrandModel)
-class BrandModelAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'code_name')
+@admin.register(BrandDict)
+class BrandDictAdmin(admin.ModelAdmin):
+    list_display = ('id', 'value', 'code')
