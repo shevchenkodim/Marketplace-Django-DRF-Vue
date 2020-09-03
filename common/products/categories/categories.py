@@ -6,6 +6,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 
 class CategoryModel(MPTTModel, SeoModel):
+    """ Categories MPTTModel models """
     name = models.CharField(max_length=100, unique=True, db_index=True)
     code_name = models.CharField(max_length=100, unique=True, db_index=True)
     slug = models.SlugField(max_length=125, unique=True)

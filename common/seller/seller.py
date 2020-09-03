@@ -5,6 +5,7 @@ from common.seo.seo import SeoModel
 
 
 class SellerModel(SeoModel):
+    """ Seller model """
     name = models.CharField(max_length=125, unique=True, db_index=True)
     code_name = models.CharField(max_length=125, unique=True, db_index=True)
     slug = models.SlugField(max_length=125, unique=True)

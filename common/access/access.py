@@ -3,6 +3,7 @@ from django.conf import settings
 
 
 class AccessRole(models.Model):
+    """ Access role model """
     role = models.CharField(max_length=40, verbose_name='Назва ролі')
     code_role = models.CharField(max_length=40, unique=True, verbose_name='Код ролі')
 
@@ -14,6 +15,7 @@ class AccessRole(models.Model):
 
 
 class ItemAccess(models.Model):
+    """ Abstract item access model """
     role = models.ForeignKey(AccessRole, on_delete=models.CASCADE, verbose_name='Роль')
     can_access = models.BooleanField(default=True, verbose_name='Може читати')
     can_change = models.BooleanField(default=False, verbose_name='Може змінювати')
@@ -27,6 +29,7 @@ class ItemAccess(models.Model):
 
 
 class UserRole(models.Model):
+    """ User role model """
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Користувач')
     role = models.ForeignKey(AccessRole, on_delete=models.CASCADE, verbose_name='Роль')
 
