@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 
     'mptt',
     'django_cleanup',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

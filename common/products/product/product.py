@@ -15,13 +15,13 @@ class Product(SeoModel):
     price = models.DecimalField(max_digits=15, decimal_places=2)
     old_price = models.DecimalField(max_digits=15, decimal_places=2)
     is_active = models.BooleanField(default=True)
-    quantity = models.ImageField(default=0)
+    quantity = models.IntegerField(default=0)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     category_id = models.ForeignKey(CategoryModel, on_delete=models.CASCADE)
     seller_id = models.ForeignKey(SellerModel, on_delete=models.CASCADE)
-    brand = models.ForeignKey(BrandDict, on_delete=models.CASCADE)
+    brand = models.ForeignKey(BrandDict, on_delete=models.CASCADE, null=True, blank=True)
 
     # def get_sale_prace(self):
     #     return ''
@@ -34,3 +34,4 @@ class Product(SeoModel):
 
     class Meta:
         db_table = 'product'
+        ordering = ['created_at']

@@ -130,16 +130,18 @@
     <!-- End Vue.js -->
 
     <script>
-        Vue.config.devtools = true
-        window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = Vue;
+        {% if DEBUG %}
+            Vue.config.devtools = true
+            window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = Vue;
+        {% endif %}
 
          let app = new Vue({
             el: '#app',
             delimiters: ['[[', ']]'],
             data: {
+                contactCSRF: document.getElementsByName("csrfmiddlewaretoken")[0].value,
                 hover1: false,
                 filter: false,
-                contactCSRF: document.getElementsByName("csrfmiddlewaretoken")[0].value,
             },
             methods: {}
         });

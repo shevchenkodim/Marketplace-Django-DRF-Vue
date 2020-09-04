@@ -6,6 +6,7 @@ from Marketplace_Django_DRF_Vue import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('clients.urls')),
+    path('api/v1/client/', include('client_api.urls')),
 ]
 
 if settings.DEBUG:
