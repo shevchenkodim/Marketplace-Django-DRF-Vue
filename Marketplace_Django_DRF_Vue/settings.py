@@ -25,6 +25,7 @@ INSTALLED_APPS = [
 
     'common',
     'clients',
+    'cart',
 
     'mptt',
     'django_cleanup',
@@ -107,3 +108,5 @@ STATICFILES_DIRS = [STATIC_DIR]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CART_SESSION_ID = env('CART_SESSION_ID')
