@@ -30,5 +30,8 @@ class ProductComment(models.Model):
     @staticmethod
     def get_average_star_rating(product):
         """ Get average star rating for product """
-        return int(ProductComment.objects.filter(product_id__product_id=product.product_id)
-                   .aggregate(Avg('rating_stars')))
+        result = ProductComment.objects.filter(product_id__product_id=product.product_id).aggregate(Avg('rating_stars'))
+        result_number = 0
+        if result.get('rating_stars__avg'):
+            result_number = int(result.get('rating_stars__avg'))
+        return result_number

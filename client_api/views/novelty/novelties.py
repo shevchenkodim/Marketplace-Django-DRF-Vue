@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from common.products.product.product import Product
 from common.products.product.product_image import ProductImage
+from common.products.comments.comments import ProductComment
 
 
 class NoveltiesView(APIView):
@@ -20,9 +21,9 @@ class NoveltiesView(APIView):
             resp_dict["old_price"] = product.old_price
             resp_dict["product_id"] = product.product_id
             resp_dict["is_available"] = product.is_available
-
-            product_image = ProductImage.objects.filter(product_id=product).first()
+            product_image = ProductImage.objects.filter(product_id__id=product.product_id).first()
             resp_dict["product_image"] = product_image.image.url
-
+            resp_dict["comment_count"] = ProductComment.get_comment_count(product)
+            resp_dict["average_star_rating"] = ProductComment.get_average_star_rating(product)
             response_list.append(resp_dict)
         return Response(data=response_list, status=status.HTTP_200_OK)
