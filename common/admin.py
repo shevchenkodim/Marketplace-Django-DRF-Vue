@@ -2,6 +2,7 @@ from django.contrib import admin
 from common.products.categories.categories import CategoryModel
 from common.clients.sliders.main_sliders import MainCarouselModel
 from common.products.characteristic.characteristic import CharacteristicAttributes, CharacteristicProduct
+from common.products.comments.comments import ProductComment
 from common.products.product.product import Product
 from common.products.product.product_image import ProductImage
 from common.seller.seller import SellerModel
@@ -13,6 +14,11 @@ from common.dictionaries.dictionaries import BrandDict, UnitDict, Characteristic
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'code')
+
+
+@admin.register(ProductComment)
+class ProductCommentAdmin(admin.ModelAdmin):
+    list_display = ('id', 'owner_id', 'text', 'likes_count', 'dislikes_count', 'rating_stars', 'date_time_add')
 
 
 @admin.register(ProductImage)
