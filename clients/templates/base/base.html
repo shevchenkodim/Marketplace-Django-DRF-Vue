@@ -139,6 +139,8 @@
             window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = Vue;
         {% endif %}
 
+        Vue.use(VueMask.VueMaskPlugin);
+
          let app = new Vue({
             el: '#app',
             delimiters: ['[[', ']]'],
@@ -146,8 +148,50 @@
                 contactCSRF: document.getElementsByName("csrfmiddlewaretoken")[0].value,
                 hover1: false,
                 filter: false,
+                block_novelty: {
+                   data: {
+                      loading: true,
+                      products: []
+                   },
+                   __state__: {}
+                }
             },
-            methods: {}
+            methods: {
+                do_init() {
+                    setTimeout(() => {
+                        this.do_init_block_novelty()
+                    }, 100)
+                },
+                do_init_block_novelty() {
+
+                    this.block_novelty.data.loading = true
+
+                    let url = '/api/v1/client/novelties'
+                    let body = {};
+                    let headers = {
+                        "X-CSRFToken": this.contactCSRF,
+                    };
+                    let method = "GET";
+
+                    axios({
+                        method: method,
+                        url: url,
+                        data: body,
+                        headers: headers
+                    }).then(resp => {
+                        if (resp.status == 200) {
+                            this.block_novelty.data.products = resp.data
+                        }
+                    }).catch(() => {
+
+                    }).finally(() => {
+                        this.block_novelty.data.loading = false
+                    })
+                },
+            },
+            created: function() {
+                this.do_init()
+            },
         });
     </script>
 

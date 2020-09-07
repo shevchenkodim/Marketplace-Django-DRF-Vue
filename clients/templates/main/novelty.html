@@ -3,15 +3,18 @@
 <!-- ============================================================== -->
 <!-- Start block Novelty  -->
 <!-- ============================================================== -->
+
 <div class="row el-element-overlay pt-2">
     <div class="col-12">
         <h5>Новинки</h5>
     </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="card border" style="border-radius: 10px;">
+</div>
+<div v-if="!block_novelty.data.loading" class="row el-element-overlay pt-2">
+    <div v-for="product in block_novelty.data.products" class="col-lg-3 col-md-6">
+        <div class="card border my-border-radius">
             <div class="el-card-item pb-0">
-                <div class="el-card-avatar el-overlay-1 p-3" style="border-radius: 10px;">
-                    <img src="{% static '/assets/images/products/iphone_pro_11.png' %}" alt="user">
+                <div class="el-card-avatar el-overlay-1 p-3 my-border-radius">
+                    <img v-bind:src="[[ product.product_image ]]" alt="user">
                     <div class="el-overlay d-flex align-items-center justify-content-center">
                         <a class="text-white" href="#!">
                             <i class="mdi mdi-cart-outline pr-2" style="font-size: 34px"></i>
@@ -23,7 +26,7 @@
             <div class="card-body pt-0">
                 <h4>
                     <a href="" class="text-dark" >
-                        Apple iPhone 11
+                        [[ product.name ]]
                     </a>
                 </h4>
                 <div class="row pl-2 pb-3 d-flex align-items-center">
@@ -32,128 +35,33 @@
                     <i class="far fa-star text-warning"></i>
                     <i class="far fa-star text-warning"></i>
                     <i class="far fa-star"></i>
-                    <span class="text-muted pt-1 pl-3">33 відгуки</span>
+                    <span class="text-muted pt-1 pl-3">
+                        [[ product.comment_count ]] відгуків
+                    </span>
                 </div>
                 <div class="row pl-2 pr-2 d-flex justify-content-between">
-                    <h6><strike>20 000 ₴</strike></h6>
-                    <h5 class="text-danger">18 500 ₴</h5>
+                    <h6 v-if="product.old_price">
+                        <strike>
+                            [[ product.old_price ]] грн.
+                        </strike>
+                    </h6>
+                    <h5><span class="my-color-red">
+                        [[ product.price ]] грн.
+                    </span></h5>
                 </div>
-                <span class="text-success">
+                <span v-if="product.is_available" class="text-success">
                     Є в наявності
                 </span>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="card border" style="border-radius: 10px;">
-            <div class="el-card-item pb-0">
-                <div class="el-card-avatar el-overlay-1 p-3" style="border-radius: 10px;">
-                    <img src="{% static '/assets/images/products/mac_pro_1.png' %}" alt="user">
-                    <div class="el-overlay d-flex align-items-center justify-content-center">
-                        <a class="text-white" href="#!">
-                            <i class="mdi mdi-cart-outline pr-2" style="font-size: 34px"></i>
-                            <i class="far fa-heart pl-2" style="font-size: 33px"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body pt-0">
-                <h4>
-                    <a href="" class="text-dark" >
-                        Apple MacBook Pro
-                    </a>
-                </h4>
-                <div class="row pl-2 pb-3 d-flex align-items-center">
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <span class="text-muted pt-1 pl-3">10 відгуки</span>
-                </div>
-                <div class="row pl-2 pr-2 d-flex justify-content-between">
-                    <h6><strike>90 000 ₴</strike></h6>
-                    <h5 class="text-danger">85 500 ₴</h5>
-                </div>
-                <span class="text-success">
-                    Є в наявності
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="card border" style="border-radius: 10px;">
-            <div class="el-card-item pb-0">
-                <div class="el-card-avatar el-overlay-1 p-3" style="border-radius: 10px;">
-                    <img src="{% static '/assets/images/products/amazfit_gts_1.png' %}" alt="user">
-                    <div class="el-overlay d-flex align-items-center justify-content-center">
-                        <a class="text-white" href="#!">
-                            <i class="mdi mdi-cart-outline pr-2" style="font-size: 34px"></i>
-                            <i class="far fa-heart pl-2" style="font-size: 33px"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body pt-0">
-                <h4>
-                    <a href="" class="text-dark" >
-                        Amazfit GTS (Pink)
-                    </a>
-                </h4>
-                <div class="row pl-2 pb-3 d-flex align-items-center">
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <span class="text-muted pt-1 pl-3">3 відгуки</span>
-                </div>
-                <div class="row pl-2 pr-2 d-flex justify-content-between">
-                    <h6><strike>3 699 ₴</strike></h6>
-                    <h5 class="text-danger">3 499 ₴</h5>
-                </div>
-                <span class="text-danger">
+                <span v-else class="badge badge-danger">
+                    <i class="far fa-frown"></i>
                     Немає в наявності
                 </span>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="card border" style="border-radius: 10px;">
-            <div class="el-card-item pb-0">
-                <div class="el-card-avatar el-overlay-1 p-3" style="border-radius: 10px;">
-                    <img src="{% static '/assets/images/products/samsung_tv.png' %}" alt="user">
-                    <div class="el-overlay d-flex align-items-center justify-content-center">
-                        <a class="text-white" href="#!">
-                            <i class="mdi mdi-cart-outline pr-2" style="font-size: 34px"></i>
-                            <i class="far fa-heart pl-2" style="font-size: 33px"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body pt-0">
-                <h4>
-                    <a href="" class="text-dark" >
-                        TV Samsung 65
-                    </a>
-                </h4>
-                <div class="row pl-2 pb-3 d-flex align-items-center">
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star"></i>
-                    <span class="text-muted pt-1 pl-3">2 відгуки</span>
-                </div>
-                <div class="row pl-2 pr-2 d-flex justify-content-between">
-                    <h5 class="text-danger">51 999 ₴</h5>
-                </div>
-                <span class="text-success">
-                    Є в наявності
-                </span>
-            </div>
-        </div>
-    </div>
+</div>
+<div v-else class="row d-flex justify-content-center">
+    {% include 'base/spiner_loader_for_blocks.html' %}
 </div>
 <!-- ============================================================== -->
 <!-- End block Novelty  -->
