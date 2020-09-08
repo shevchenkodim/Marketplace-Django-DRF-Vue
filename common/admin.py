@@ -8,7 +8,7 @@ from common.products.product.product_image import ProductImage
 from common.seller.seller import SellerModel
 from common.models import User
 from common.access.access import AccessRole, UserRole
-from common.dictionaries.dictionaries import BrandDict, UnitDict, CharacteristicHandbookDict
+from common.dictionaries.dictionaries import BrandDict, UnitDict, CharacteristicHandbookDict, CurrencyDict
 
 
 @admin.register(Product)
@@ -78,4 +78,9 @@ class SellerModelAdmin(admin.ModelAdmin):
 
 @admin.register(BrandDict)
 class BrandDictAdmin(admin.ModelAdmin):
+    list_display = ('id', 'value', 'code')
+
+
+@admin.register(CurrencyDict)
+class CurrencyDictAdmin(admin.ModelAdmin):
     list_display = ('id', 'value', 'code')

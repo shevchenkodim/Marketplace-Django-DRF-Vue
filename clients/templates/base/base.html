@@ -42,6 +42,11 @@
 </head>
 
 <body>
+
+    <script type="application/javascript">
+        let main_currency = '{{ main_currency|safe }}';
+    </script>
+
     <div id="app">
         {% csrf_token %}
 

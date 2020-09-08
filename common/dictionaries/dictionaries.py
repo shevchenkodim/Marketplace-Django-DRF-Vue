@@ -3,6 +3,16 @@ from common.products.categories.categories import CategoryModel
 from django.db import models
 
 
+class CurrencyDict(Dictionaries):
+    """ Currency dict model """
+
+    def __str__(self):
+        return f'{self.value} [{self.code}]'
+
+    class Meta:
+        db_table = 'dict_currency'
+
+
 class UnitDict(Dictionaries):
     """ Units dict model """
 

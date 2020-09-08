@@ -42,11 +42,11 @@
                 <div class="row pl-2 pr-2 d-flex justify-content-between">
                     <h6 v-if="product.old_price">
                         <strike>
-                            [[ product.old_price ]] грн.
+                            [[ product.old_price ]] {{ main_currency }}.
                         </strike>
                     </h6>
                     <h5><span class="my-color-red">
-                        [[ product.price ]] грн.
+                        [[ product.price ]] {{ main_currency }}.
                     </span></h5>
                 </div>
                 <span v-if="product.is_available" class="text-success">
