@@ -29,7 +29,18 @@
     {% include 'products_for_categories/products.html' %}
 
     {% include 'products_for_categories/paginations.html' %}
-{% endblock content %}
 
-{% block java_script %}
-{% endblock java_script %}
+    <script type="application/javascript">
+        init_urls = {}
+
+        init_data = {
+            hover1: false,
+            filter: false,
+        }
+
+        init_methods = {
+            do_init() {},
+        }
+    </script>
+
+{% endblock content %}

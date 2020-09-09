@@ -17,4 +17,48 @@
         {% include 'main/novelty.html' %}
     {% endblock novelty %}
     <!-- End Novelty -->
+
+    <script type="application/javascript">
+        init_urls = {}
+
+        init_data = {
+            block_novelty: {
+                data: {
+                  loading: true,
+                  products: []
+                },
+                __state__: {}
+            }
+        }
+
+        init_methods = {
+            do_init() {
+                this.do_init_block_novelty()
+            },
+            do_init_block_novelty() {
+                this.data.block_novelty.data.loading = true
+                let url = '/api/v1/client/novelties'
+                let body = {};
+                let headers = {
+                    "X-CSRFToken": this.data.contactCSRF,
+                };
+                let method = "GET";
+                axios({
+                    method: method,
+                    url: url,
+                    data: body,
+                    headers: headers
+                }).then(resp => {
+                    if (resp.status == 200) {
+                        this.data.block_novelty.data.products = resp.data
+                    }
+                }).catch(() => {
+
+                }).finally(() => {
+                    this.data.block_novelty.data.loading = false
+                })
+            },
+        }
+    </script>
+
 {% endblock content %}

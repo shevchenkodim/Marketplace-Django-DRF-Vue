@@ -42,9 +42,11 @@
 </head>
 
 <body>
-
     <script type="application/javascript">
-        let main_currency = '{{ main_currency|safe }}';
+        let init_data = {}
+        let init_state = {}
+        let init_methods = {}
+        let init_urls = {}
     </script>
 
     <div id="app">
@@ -138,60 +140,9 @@
     <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
     <!-- End Vue.js -->
 
-    <script>
-        {% if DEBUG %}
-            Vue.config.devtools = true
-            window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = Vue;
-        {% endif %}
-
-        Vue.use(VueMask.VueMaskPlugin);
-
-         let app = new Vue({
-            el: '#app',
-            delimiters: ['[[', ']]'],
-            data: {
-                contactCSRF: document.getElementsByName("csrfmiddlewaretoken")[0].value,
-                hover1: false,
-                filter: false,
-                block_novelty: {
-                   data: {
-                      loading: true,
-                      products: []
-                   },
-                   __state__: {}
-                }
-            },
-            methods: {
-                do_init() {
-                    this.do_init_block_novelty()
-                },
-                do_init_block_novelty() {
-
-                    this.block_novelty.data.loading = true
-
-                    let url = '/api/v1/client/novelties'
-                    let body = {};
-                    let headers = {
-                        "X-CSRFToken": this.contactCSRF,
-                    };
-                    let method = "GET";
-
-                    axios({
-                        method: method,
-                        url: url,
-                        data: body,
-                        headers: headers
-                    }).then(resp => {
-                        if (resp.status == 200) {
-                            this.block_novelty.data.products = resp.data
-                        }
-                    }).catch(() => {
-
-                    }).finally(() => {
-                        this.block_novelty.data.loading = false
-                    })
-                },
-                render_star_rating(value) {
+    <script type="application/javascript">
+        init_additional_generic_methods = {
+            render_star_rating(value) {
                     let html = ''
                     let star = '<i class="fas fa-star text-warning"></i>'
                     let star_empty = '<i class="far fa-star text-warning"></i>'
@@ -205,15 +156,39 @@
                     }
                     return html
                  },
+        }
+
+        {% if DEBUG %}
+            Vue.config.devtools = true
+            window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = Vue;
+        {% endif %}
+
+        Vue.use(VueMask.VueMaskPlugin);
+
+         let app = new Vue({
+            el: '#app',
+            delimiters: ['[[', ']]'],
+            data: {
+                data: {
+                    contactCSRF: document.getElementsByName("csrfmiddlewaretoken")[0].value,
+                    ...init_data,
+                },
+                state: {
+                    ...init_state,
+                },
+                urls: {
+                    ...init_urls,
+                }
+            },
+            methods: {
+                ...init_methods,
+                ...init_additional_generic_methods,
             },
             created: function() {
                 this.do_init()
             }
         });
     </script>
-
-    {% block java_script %}
-    {% endblock java_script %}
 </body>
 
 </html>

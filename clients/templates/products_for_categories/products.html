@@ -5,10 +5,10 @@
 <!-- ============================================================== -->
 <!-- @mouseover="hover = true" @mouseleave="hover = false" v-if="hover" -->
 <div class="row el-element-overlay pt-2">
-    <div @mouseover="hover1 = true" @mouseleave="hover1 = false" class="col-lg-3 col-md-6" style="position: relative;">
-        <div class="card border" v-bind:class="{'product-block shadow-lg': hover1}" style="border-radius: 10px;">
+    <div @mouseover="data.hover1 = true" @mouseleave="data.hover1 = false" class="col-lg-3 col-md-6" style="position: relative;">
+        <div class="card border my-border-radius" v-bind:class="{'product-block shadow-lg': data.hover1}">
             <div class="el-card-item pb-0">
-                <div class="el-card-avatar el-overlay-1 p-3" style="border-radius: 10px;">
+                <div class="el-card-avatar el-overlay-1 p-3 my-border-radius">
                     <img src="{% static '/assets/images/products/iphone_pro_11.png' %}" alt="user">
                     <div class="el-overlay d-flex align-items-center justify-content-center">
                         <a class="text-white" href="#!">
@@ -40,7 +40,7 @@
                     <i class="fas fa-check"></i>
                     Є в наявності
                 </span>
-                <span v-if="hover1">
+                <span v-if="data.hover1">
                     Екран (6.4", Super AMOLED, 2340х1080) / Samsung Exynos 9611 (4 x 2.3 ГГц + 4 x 1.7 ГГц) / квадро основна камера: 64 Мп + 8 Мп + 5 Мп + 5 Мп, фронтальна 32 Мп / RAM 6 ГБ / 128 ГБ вбудованої пам'яті + microSD (до 512 ГБ) / 3G / LTE / GPS / ГЛОНАСС / BDS / Galileo / підтримка 2 SIM-карток (Nano-SIM) / Android 10 (Q) / 6000 мА·год
                 </span>
             </div>
