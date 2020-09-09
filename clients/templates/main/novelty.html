@@ -30,11 +30,7 @@
                     </a>
                 </h4>
                 <div class="row pl-2 pb-3 d-flex align-items-center">
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star"></i>
+                    <span v-html="render_star_rating(product.average_star_rating)"></span>
                     <span class="text-muted pt-1 pl-3">
                         [[ product.comment_count ]] відгуків
                     </span>

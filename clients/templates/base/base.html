@@ -163,9 +163,7 @@
             },
             methods: {
                 do_init() {
-                    setTimeout(() => {
-                        this.do_init_block_novelty()
-                    }, 100)
+                    this.do_init_block_novelty()
                 },
                 do_init_block_novelty() {
 
@@ -193,10 +191,24 @@
                         this.block_novelty.data.loading = false
                     })
                 },
+                render_star_rating(value) {
+                    let html = ''
+                    let star = '<i class="fas fa-star text-warning"></i>'
+                    let star_empty = '<i class="far fa-star text-warning"></i>'
+                    let list_stars = [1, 2, 3, 4, 5]
+                    for (let item in list_stars) {
+                        if (list_stars[item] <= value) {
+                            html += star
+                        } else {
+                           html += star_empty
+                        }
+                    }
+                    return html
+                 },
             },
             created: function() {
                 this.do_init()
-            },
+            }
         });
     </script>
 
