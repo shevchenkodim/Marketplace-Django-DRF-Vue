@@ -19,7 +19,9 @@
     <!-- End Novelty -->
 
     <script type="application/javascript">
-        init_urls = {}
+        init_urls = {
+            do_load_data_to_novelties: '/api/v1/client/novelties',
+        }
 
         init_data = {
             block_novelty: {
@@ -37,26 +39,17 @@
             },
             do_init_block_novelty() {
                 this.data.block_novelty.data.loading = true
-                let url = '/api/v1/client/novelties'
-                let body = {};
-                let headers = {
-                    "X-CSRFToken": this.data.contactCSRF,
-                };
-                let method = "GET";
-                axios({
-                    method: method,
-                    url: url,
-                    data: body,
-                    headers: headers
-                }).then(resp => {
+
+                this.axios_call(_url = this.urls.do_load_data_to_novelties)
+                 .then(resp => {
                     if (resp.status == 200) {
                         this.data.block_novelty.data.products = resp.data
                     }
-                }).catch(() => {
+                 }).catch(() => {
 
-                }).finally(() => {
+                 }).finally(() => {
                     this.data.block_novelty.data.loading = false
-                })
+                 })
             },
         }
     </script>

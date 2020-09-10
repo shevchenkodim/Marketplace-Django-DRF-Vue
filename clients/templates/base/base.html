@@ -140,23 +140,9 @@
     <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
     <!-- End Vue.js -->
 
+    <script src="{% static '/utils/utils.js' %}"></script>
+
     <script type="application/javascript">
-        init_additional_generic_methods = {
-            render_star_rating(value) {
-                    let html = ''
-                    let star = '<i class="fas fa-star text-warning"></i>'
-                    let star_empty = '<i class="far fa-star text-warning"></i>'
-                    let list_stars = [1, 2, 3, 4, 5]
-                    for (let item in list_stars) {
-                        if (list_stars[item] <= value) {
-                            html += star
-                        } else {
-                           html += star_empty
-                        }
-                    }
-                    return html
-                 },
-        }
 
         {% if DEBUG %}
             Vue.config.devtools = true
@@ -181,8 +167,8 @@
                 }
             },
             methods: {
+                ...utils,
                 ...init_methods,
-                ...init_additional_generic_methods,
             },
             created: function() {
                 this.do_init()
