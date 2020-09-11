@@ -111,6 +111,12 @@
             <!-- End Page wrapper  -->
         </div>
         <!-- End Wrapper -->
+
+        {% include 'base/modals.html' %}
+
+        {% block modals %}
+        {% endblock modals %}
+
     </div>
     <!-- All Jquery -->
     <script src="{% static '/assets/libs/jquery/dist/jquery.min.js' %}"></script>

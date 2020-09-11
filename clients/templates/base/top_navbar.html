@@ -77,8 +77,7 @@
                                 <i class="far fa-heart m-r-5 m-l-5"></i>
                                 Список бажаннь
                             </a>
-
-                            <a class="dropdown-item" href="javascript:void(0)">
+                            <a class="dropdown-item" href="{% url 'client:client_logout' %}">
                                 <i class="fa fa-power-off m-r-5 m-l-5"></i>
                                 Вихід
                             </a>
@@ -90,6 +89,10 @@
                             <a class="dropdown-item" href="javascript:void(0)">
                                 <i class="far fa-heart m-r-5 m-l-5"></i>
                                 Список бажаннь
+                            </a>
+                            <a class="dropdown-item" href="#!" data-toggle="modal" data-target="#signup_modal_id">
+                                <i class="fas fa-sign-in-alt m-r-5 m-l-5"></i>
+                                Вхід / Реєстрація
                             </a>
                         {% endif %}
                     </div>

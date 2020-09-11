@@ -1,3 +1,6 @@
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+from django.urls import reverse
 from django.views.generic import TemplateView
 from common.clients.sliders.main_sliders import MainCarouselModel
 from common.products.categories.categories import CategoryModel
@@ -31,3 +34,8 @@ class ProductView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["product"] = 'Product test'
         return context
+
+
+def client_logout(request):
+    logout(request)
+    return redirect(reverse('client:index'))
