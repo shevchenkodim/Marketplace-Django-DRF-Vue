@@ -51,6 +51,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     def user_roles(user_id):
         try:
             user_role_list = UserRole.objects.filter(user_id=user_id)
-            return set(user_role.role for user_role in user_role_list)
+            return set(user_role.role.code_role for user_role in user_role_list)
         except Exception as e:
             return set()
