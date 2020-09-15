@@ -2,9 +2,9 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.utils.decorators import method_decorator
+from clients.utils.decorators import client_or_none_only, client_only
 from django.views.generic import TemplateView
 
-from clients.utils.decorators import client_or_none_only, client_only
 from common.clients.sliders.main_sliders import MainCarouselModel
 from common.products.categories.categories import CategoryModel
 
