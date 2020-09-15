@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'common',
     'clients',
     'cart',
+    'broker',
 
     'mptt',
     'django_cleanup',
