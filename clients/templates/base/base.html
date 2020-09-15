@@ -61,54 +61,55 @@
         </div>
         <!-- Main wrapper - style you can find in pages.scss -->
         <div id="main-wrapper">
-            <!-- Topbar header - style you can find in pages.scss -->
-            {% include 'base/top_navbar.html' %}
-            <!-- End Topbar header -->
+            {% block main_content %}
+                <!-- Topbar header - style you can find in pages.scss -->
+                {% include 'base/top_navbar.html' %}
+                <!-- End Topbar header -->
 
-            <!-- Left Sidebar - style you can find in sidebar.scss  -->
-            {% include 'base/left_sidebar.html' %}
-            <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+                <!-- Left Sidebar - style you can find in sidebar.scss  -->
+                {% include 'base/left_sidebar.html' %}
+                <!-- End Left Sidebar - style you can find in sidebar.scss  -->
 
-            <!-- Page wrapper  -->
-            <div class="page-wrapper bg-light">
-                <div class="pl-5 pr-5">
+                <!-- Page wrapper  -->
+                <div class="page-wrapper bg-light">
+                    <div class="pl-5 pr-5">
 
-                    <!-- Start Medium -->
-                    {% block medium %}
+                        <!-- Start Medium -->
+                        {% block medium %}
 
-                        {% block breadcrumb %}
-                            {% include 'base/breadcrumb.html' %}
-                        {% endblock %}
+                            {% block breadcrumb %}
+                                {% include 'base/breadcrumb.html' %}
+                            {% endblock %}
 
-                        <!-- Start Content -->
-                        {% block content %}
-                        {% endblock content %}
-                        <!-- End Content -->
+                            <!-- Start Content -->
+                            {% block content %}
+                            {% endblock content %}
+                            <!-- End Content -->
 
-                        <!-- Start Social Network -->
-                        {% block info_social_network %}
-                            {% include 'base/info_social_network.html' %}
-                        {% endblock info_social_network %}
-                        <!-- End Social Network -->
+                            <!-- Start Social Network -->
+                            {% block info_social_network %}
+                                {% include 'base/info_social_network.html' %}
+                            {% endblock info_social_network %}
+                            <!-- End Social Network -->
 
-                        <!-- Start Info -->
-                        {% block info %}
-                            {% include 'base/info.html' %}
-                        {% endblock info %}
-                        <!-- End Info -->
+                            <!-- Start Info -->
+                            {% block info %}
+                                {% include 'base/info.html' %}
+                            {% endblock info %}
+                            <!-- End Info -->
 
-                    {% endblock medium %}
-                    <!-- End Medium -->
+                        {% endblock medium %}
+                        <!-- End Medium -->
+                    </div>
+
+                    <!-- Start Footer -->
+                    {% block footer %}
+                        {% include 'base/footer.html' %}
+                    {% endblock footer %}
+                    <!-- End Footer -->
                 </div>
-
-                <!-- Start Footer -->
-                {% block footer %}
-                    {% include 'base/footer.html' %}
-                {% endblock footer %}
-                <!-- End Footer -->
-
-            </div>
-            <!-- End Page wrapper  -->
+                <!-- End Page wrapper  -->
+            {% endblock main_content %}
         </div>
         <!-- End Wrapper -->
 
