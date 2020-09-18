@@ -87,10 +87,7 @@
                     <div class="row border-top border-secondary">
                         <div class="col-12">
                             <div class="form-group">
-                                <div class="p-t-20 d-flex justify-content-between align-items-center">
-                                    <a href="#!" class="text-white">
-                                        Потрібна реєстрація?
-                                    </a>
+                                <div class="p-t-20 d-flex justify-content-end">
                                     <button class="btn btn-success" type="button">
                                         Вхід
                                     </button>
@@ -105,8 +102,8 @@
 
     <script type="application/javascript">
         init_urls = {
-            do_auth_sign_in: "{% url 'client_api:sign_in' %}",
-            do_auth_sign_up: "{% url 'client_api:sign_up' %}",
+            do_client_auth: "{% url 'client_api:auth' %}",
+            do_client_auth_init: "{% url 'client_api:auth_init' %}"
         }
 
         init_data = {
@@ -119,16 +116,21 @@
                     mobile_phone: '',
                     otp_code: ''
                 },
-                __state__: {
-                    action: 'SIGN_IN',
-                    step: 'FIRST',
-                    need_otp: false,
+                __state__: {step: 'FIRST', otp: false, otp_editable: false, first_name: false,
+                    first_name_editable: false, last_name: false, last_name_editable: false,
+                    email: false, email_editable: false, password: false, password_editable: false,
+                    phone: false, phone_editable: false
                 }
             }
         }
 
         init_methods = {
-            do_init() {},
+            do_init() {
+                this.do_client_auth_init()
+            },
+            do_client_auth_init() {
+                 this.axios_call(_url=this.urls.do_client_auth_init)
+            }
         }
     </script>
 {% endblock main_content %}
