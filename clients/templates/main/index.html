@@ -40,7 +40,7 @@
             do_init_block_novelty() {
                 this.data.block_novelty.data.loading = true
 
-                this.axios_call(_url = this.urls.do_load_data_to_novelties)
+                this.axios_get(_url = this.urls.do_load_data_to_novelties)
                  .then(resp => {
                     if (resp.status == 200) {
                         this.data.block_novelty.data.products = resp.data

@@ -17,70 +17,102 @@
                 <div class="form-horizontal m-t-10">
                     <div class="row p-b-20">
                         <div class="col-12">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-success text-white" id="basic-addon1">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                </div>
-                                <input type="text" class="form-control form-control-lg mr-1"
-                                       placeholder="First Name" aria-label="First Name"
-                                       aria-describedby="basic-addon1" required="">
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-success text-white" id="basic-addon1">
-                                        <i class="fas fa-user-plus"></i>
-                                    </span>
-                                </div>
-                                <input type="text" class="form-control form-control-lg mr-1"
-                                       placeholder="Last Name" aria-label="Last Name"
-                                       aria-describedby="basic-addon1" required="">
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-danger text-white" id="basic-addon1">
-                                        <i class="ti-email"></i>
-                                    </span>
-                                </div>
-                                <input type="email" class="form-control form-control-lg"
-                                       placeholder="Email Address" aria-label="Username"
-                                       aria-describedby="basic-addon1">
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text bg-warning text-white" id="basic-addon2">
-                                        <i class="ti-pencil"></i>
-                                    </span>
-                                </div>
-                                <input type="password" class="form-control form-control-lg"
-                                       placeholder="Password" aria-label="Password"
-                                       aria-describedby="basic-addon1" required="">
-                            </div>
-
-                            <div class="input-group mb-3">
+                            <div v-if="data.auth.__state__.phone"
+                                 class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-info text-white" id="basic-addon1">
                                         <i class="ti-mobile"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control form-control-lg mr-1"
-                                       placeholder="Mobile phone" aria-label="Mobile phone"
-                                       aria-describedby="basic-addon1" required="">
+                                <input v-model="data.auth.data.phone"
+                                       v-bind:disabled="!data.auth.__state__.phone_editable"
+                                       v-mask="'+##(###)###-##-##'"
+                                       type="text"
+                                       class="form-control form-control-lg mr-1"
+                                       placeholder="Mobile phone"
+                                       aria-label="Mobile phone"
+                                       aria-describedby="basic-addon1">
                             </div>
 
-                            <div class="input-group mb-3">
+                            <div v-if="data.auth.__state__.otp"
+                                 class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-primary text-white" id="basic-addon1">
                                         <i class="fas fa-code"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control form-control-lg mr-1"
-                                       placeholder="OTP-code" aria-label="OTP-code"
-                                       aria-describedby="basic-addon1" required="">
+                                <input v-model="data.auth.data.otp_code"
+                                       v-bind:disabled="!data.auth.__state__.otp_editable"
+                                       v-mask="'####'"
+                                       type="text"
+                                       class="form-control form-control-lg mr-1"
+                                       placeholder="OTP-code"
+                                       aria-label="OTP-code"
+                                       aria-describedby="basic-addon1">
+                            </div>
+
+                            <div v-if="data.auth.__state__.first_name"
+                                 class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-success text-white" id="basic-addon1">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+                                <input v-model="data.auth.data.first_name"
+                                       v-bind:disabled="!data.auth.__state__.first_name_editable"
+                                       type="text"
+                                       class="form-control form-control-lg mr-1"
+                                       placeholder="First Name"
+                                       aria-label="First Name"
+                                       aria-describedby="basic-addon1">
+                            </div>
+
+                            <div v-if="data.auth.__state__.last_name"
+                                 class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-success text-white" id="basic-addon1">
+                                        <i class="fas fa-user-plus"></i>
+                                    </span>
+                                </div>
+                                <input v-model="data.auth.data.last_name"
+                                       v-bind:disabled="!data.auth.__state__.last_name_editable"
+                                       type="text"
+                                       class="form-control form-control-lg mr-1"
+                                       placeholder="Last Name"
+                                       aria-label="Last Name"
+                                       aria-describedby="basic-addon1">
+                            </div>
+
+                            <div v-if="data.auth.__state__.email"
+                                 class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-danger text-white" id="basic-addon1">
+                                        <i class="ti-email"></i>
+                                    </span>
+                                </div>
+                                <input v-model="data.auth.data.email"
+                                       v-bind:disabled="!data.auth.__state__.email_editable"
+                                       type="email"
+                                       class="form-control form-control-lg"
+                                       placeholder="Email Address"
+                                       aria-label="Username"
+                                       aria-describedby="basic-addon1">
+                            </div>
+
+                            <div v-if="data.auth.__state__.password"
+                                 class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-warning text-white" id="basic-addon2">
+                                        <i class="ti-pencil"></i>
+                                    </span>
+                                </div>
+                                <input v-model="data.auth.data.password"
+                                       v-bind:disabled="!data.auth.__state__.password_editable"
+                                       type="password"
+                                       class="form-control form-control-lg"
+                                       placeholder="Password"
+                                       aria-label="Password"
+                                       aria-describedby="basic-addon1">
                             </div>
                         </div>
                     </div>
@@ -88,7 +120,9 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <div class="p-t-20 d-flex justify-content-end">
-                                    <button class="btn btn-success" type="button">
+                                    <button v-on:click="do_client_auth"
+                                            class="btn btn-success"
+                                            type="button">
                                         Вхід
                                     </button>
                                 </div>
@@ -103,7 +137,7 @@
     <script type="application/javascript">
         init_urls = {
             do_client_auth: "{% url 'client_api:auth' %}",
-            do_client_auth_init: "{% url 'client_api:auth_init' %}"
+            do_client_auth_init: "{% url 'client_api:auth_init' %}",
         }
 
         init_data = {
@@ -113,13 +147,14 @@
                     last_name: '',
                     email: '',
                     password: '',
-                    mobile_phone: '',
+                    phone: '',
                     otp_code: ''
                 },
-                __state__: {step: 'FIRST', otp: false, otp_editable: false, first_name: false,
+                __state__: {
+                    step: 'FIRST', otp: false, otp_editable: false, first_name: false,
                     first_name_editable: false, last_name: false, last_name_editable: false,
                     email: false, email_editable: false, password: false, password_editable: false,
-                    phone: false, phone_editable: false
+                    phone: true, phone_editable: true
                 }
             }
         }
@@ -128,8 +163,38 @@
             do_init() {
                 this.do_client_auth_init()
             },
+            do_client_auth() {
+                this.axios_post(_url = this.urls.do_client_auth, _body = this.data.auth.data)
+                    .then(resp => {
+                        if (resp.status == 200) {
+                            if(resp.data.state) {
+                                this.do_update_auth_state(resp.data.state)
+                            }
+                            if(resp.data.parameters) {
+                                this.do_update_auth_parameters(resp.data.parameters)
+                            }
+                            if(resp.data.errors && resp.data.errors.message) {
+                                toastr.error(resp.data.errors.message)
+                            }
+                        }
+                    }).catch(() => {
+
+                }).finally(() => {
+
+                })
+            },
             do_client_auth_init() {
-                 this.axios_call(_url=this.urls.do_client_auth_init)
+                 this.axios_get(_url = this.urls.do_client_auth_init)
+            },
+            do_update_auth_state(new_state) {
+                for(let key in new_state) {
+                    this.data.auth.__state__[key] = new_state[key]
+                }
+            },
+            do_update_auth_parameters(parameters) {
+                for(let key in parameters) {
+                    this.data.auth.data[key] = parameters[key]
+                }
             }
         }
     </script>
