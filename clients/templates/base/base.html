@@ -33,7 +33,7 @@
     <!-- Custom CSS -->
     <link href="{% static '/css/style.min.css' %}" rel="stylesheet">
     <link href="{% static '/css/main_style.css' %}" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
+    <link href="{% static '/css/toastr.min.css' %}" rel="stylesheet">
 
     <!-- Start block css -->
     {% block css %}
@@ -139,9 +139,9 @@
     <script src="{% static '/js/fotorama.js' %}"></script>
 
     <!-- axios -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="{% static '/js/axios.min.js' %}"></script>
     <!-- Toastr -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="{% static '/js/toastr.min.js' %}"></script>
     <!-- Start Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>

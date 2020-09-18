@@ -36,7 +36,7 @@ def client_auth(request):
                 except User.DoesNotExist:
                     pass
             else:
-                errors = {"message": "Вкажіть новер телефону вірно"}
+                errors = {"message": "Вкажіть вірний номер телефону"}
                 state = {"phone": True, "phone_editable": True}
                 return Response({"errors": errors, "state": state}, status=status.HTTP_200_OK)
         else:
@@ -46,8 +46,8 @@ def client_auth(request):
     elif auth_step == second:
         pass
     else:
-        pass
-    return Response({}, status=status.HTTP_200_OK)
+        state = {"phone": True, "phone_editable": True}
+    return Response({"state": state}, status=status.HTTP_200_OK)
 
 
 def get_otp_code():
