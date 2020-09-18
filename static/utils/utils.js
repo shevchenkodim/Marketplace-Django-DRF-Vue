@@ -1,17 +1,19 @@
 utils = {
-    axios_call(_url, _body = {}, _headers = {}, _method = 'GET') {
-        let url = _url
-        let method = _method;
-        let body = {..._body}
+    axios_post(_url, _body = {}) {
         let headers = {
             "X-CSRFToken": this.data.contactCSRF,
-            ..._headers
         }
         return axios({
-            method: method,
-            url: url,
-            data: body,
+            method: 'POST',
+            url: _url,
+            data: _body,
             headers: headers
+        })
+    },
+    axios_get(_url) {
+        return axios({
+            method: 'GET',
+            url: _url
         })
     },
     render_star_rating(value) {
