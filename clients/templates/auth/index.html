@@ -114,6 +114,12 @@
                                        aria-label="Password"
                                        aria-describedby="basic-addon1">
                             </div>
+
+                            <div v-if="state.auth.loading"
+                                 class="overlay text-center text-white">
+                                <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+                            </div>
+
                         </div>
                     </div>
                     <div class="row border-top border-secondary">
@@ -159,11 +165,20 @@
             }
         }
 
+        init_state = {
+            auth: {
+                loading: false
+            }
+        }
+
         init_methods = {
             do_init() {
                 this.do_client_auth_init()
             },
             do_client_auth() {
+
+                this.state.auth.loading = true
+
                 this.axios_post(_url = this.urls.do_client_auth, _body = this.data.auth.data)
                     .then(resp => {
                         if (resp.status == 200) {
@@ -183,7 +198,7 @@
                     }).catch(() => {
 
                 }).finally(() => {
-
+                    this.state.auth.loading = false
                 })
             },
             do_client_auth_init() {
