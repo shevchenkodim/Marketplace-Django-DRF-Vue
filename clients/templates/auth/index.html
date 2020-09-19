@@ -176,6 +176,9 @@
                             if(resp.data.errors && resp.data.errors.message) {
                                 toastr.error(resp.data.errors.message)
                             }
+                            if(resp.data.status === 'ok') {
+                                window.location.replace(resp.data.redirect)
+                            }
                         }
                     }).catch(() => {
 
