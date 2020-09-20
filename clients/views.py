@@ -41,7 +41,9 @@ class ProductView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["product"] = 'Product test'
+        context["product_id"] = self.kwargs['slug_p']
+        context["do_product_info_url"] = reverse('client_api:get_product_info',
+                                                 kwargs={'slug_p': self.kwargs['slug_p']})
         return context
 
 
