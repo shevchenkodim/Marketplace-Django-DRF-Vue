@@ -20,6 +20,7 @@ class NoveltiesView(APIView):
             resp_dict["price"] = product.price
             resp_dict["old_price"] = product.old_price
             resp_dict["product_id"] = product.product_id
+            resp_dict["product_url"] = product.get_absolute_url()
             resp_dict["is_available"] = product.is_available
             product_image = ProductImage.objects.filter(product_id__id=product.product_id).first()
             resp_dict["product_image"] = product_image.image.url

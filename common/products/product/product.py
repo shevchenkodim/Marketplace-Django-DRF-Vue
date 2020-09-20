@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from common.dictionaries.dictionaries import BrandDict
 from common.products.categories.categories import CategoryModel
@@ -23,18 +24,16 @@ class Product(SeoModel):
     seller_id = models.ForeignKey(SellerModel, on_delete=models.CASCADE)
     brand = models.ForeignKey(BrandDict, on_delete=models.CASCADE, null=True, blank=True)
 
-    # def get_sale_prace(self):
-    #     return ''
-    #
-    # def get_absolute_url(self):
-    #     return ''
-
     class Meta:
         db_table = 'product'
         ordering = ['created_at']
 
     def __str__(self):
         return self.product_id
+
+    def get_absolute_url(self):
+        return reverse('client:product_index',
+                       kwargs={'slug_c': self.category_id.code_name, 'slug_p': self.product_id})
 
     def save(self, *args, **kwargs):
         if not self.product_id:
