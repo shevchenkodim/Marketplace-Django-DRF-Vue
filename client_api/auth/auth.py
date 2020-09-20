@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from broker.utils.verification.verification import check_phone, clean_phone, check_email
 from clients.utils.decorators import client_or_none_only, client_only
 from common.access.access import UserRole, AccessRole
+from common.geo.user_location_history import UserLocationHistoryModel
 from common.models import User
 from broker.utils.otp_code.otp_code import GenerateOtpCode
 
@@ -82,6 +83,10 @@ def client_auth(request):
                              "password_enabled": True}
                     return Response({"errors": errors, "state": state}, status=status.HTTP_200_OK)
                 login(request, client)
+                try:
+                    UserLocationHistoryModel.create_user_location(request=request, user_id=client.id)
+                except Exception as e:
+                    pass
                 return Response({"status": "ok", "redirect": reverse('client:index')}, status=status.HTTP_200_OK)
             except User.DoesNotExist:
                 first_name = data.get("first_name")
@@ -112,6 +117,10 @@ def client_auth(request):
                     user=client
                 )
                 login(request, client)
+                try:
+                    UserLocationHistoryModel.create_user_location(request=request, user_id=client.id)
+                except Exception as e:
+                    pass
                 return Response({"status": "ok", "redirect": reverse('client:index')}, status=status.HTTP_200_OK)
     else:
         state = {"phone": True, "phone_editable": True}

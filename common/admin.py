@@ -9,13 +9,18 @@ from common.seller.seller import SellerModel
 from common.models import User
 from common.access.access import AccessRole, UserRole
 from common.dictionaries.dictionaries import BrandDict, UnitDict, CharacteristicHandbookDict, CurrencyDict
-from common.geo.geo import CityModel, CountryModel, DistrictModel
+from common.geo.geo import CityModel, CountryModel, DistrictModel, IpAddressModel
 from common.geo.user_location_history import UserLocationHistoryModel
 
 
 @admin.register(UserLocationHistoryModel)
 class UserLocationHistoryModelAdmin(admin.ModelAdmin):
     list_display = ('id', 'user_id', 'ip_address', 'city_id', 'district_id', 'country_id', 'date_add')
+
+
+@admin.register(IpAddressModel)
+class IpAddressModelAdmin(admin.ModelAdmin):
+    list_display = ('id', 'ip_address')
 
 
 @admin.register(CityModel)
