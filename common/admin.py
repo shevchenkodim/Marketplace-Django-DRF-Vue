@@ -9,6 +9,22 @@ from common.seller.seller import SellerModel
 from common.models import User
 from common.access.access import AccessRole, UserRole
 from common.dictionaries.dictionaries import BrandDict, UnitDict, CharacteristicHandbookDict, CurrencyDict
+from common.geo.geo import CityModel, CountryModel, DistrictModel
+
+
+@admin.register(CityModel)
+class CityModelAdmin(admin.ModelAdmin):
+    list_display = ('id', 'code')
+
+
+@admin.register(DistrictModel)
+class CityModelAdmin(admin.ModelAdmin):
+    list_display = ('id', 'code')
+
+
+@admin.register(CountryModel)
+class CityModelAdmin(admin.ModelAdmin):
+    list_display = ('id', 'code')
 
 
 @admin.register(Product)
