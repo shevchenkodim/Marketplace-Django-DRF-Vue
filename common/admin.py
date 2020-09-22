@@ -4,6 +4,7 @@ from common.clients.sliders.main_sliders import MainCarouselModel
 from common.products.characteristic.characteristic import CharacteristicAttributes, CharacteristicProduct
 from common.products.comments.comments import ProductComment
 from common.products.product.product import Product
+from common.products.product.product_description import ProductDescription
 from common.products.product.product_image import ProductImage
 from common.seller.seller import SellerModel
 from common.models import User
@@ -11,6 +12,11 @@ from common.access.access import AccessRole, UserRole
 from common.dictionaries.dictionaries import BrandDict, UnitDict, CharacteristicHandbookDict, CurrencyDict
 from common.geo.geo import CityModel, CountryModel, DistrictModel, IpAddressModel
 from common.geo.user_location_history import UserLocationHistoryModel
+
+
+@admin.register(ProductDescription)
+class ProductDescriptionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'product_id', 'title', 'description', 'order_id')
 
 
 @admin.register(UserLocationHistoryModel)

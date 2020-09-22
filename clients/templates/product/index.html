@@ -21,33 +21,38 @@
         </div>
         <div class="col-6">
             <div class="mb-2">
-                <span class="text-dark">Код: 0000000001</span>
+                <span class="text-dark">Код: [[ data.product_info.product_id ]]</span>
             </div>
 
             <div class="mb-3">
-                <span>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                </span>
+                <span v-html="render_star_rating(data.product_info.average_star_rating)"></span>
                 <span class="pl-2">
-                    3 відгуки
+                    [[ data.product_info.comment_count ]] відгуків
                 </span>
             </div>
-            
+
             <div class="mb-3">
-                <span class="badge badge-success">
+                <span v-if="data.product_info.is_available" class="badge badge-success">
                     <i class="fas fa-check"></i>
                     Є в наявності
+                </span>
+                <span v-else class="badge badge-danger">
+                    <i class="far fa-frown"></i>
+                    Немає в наявності
                 </span>
             </div>
 
             <div class="mb-3">
                 <div class="row">
-                    <div class="col-4">
-                        <h3 class="pt-1">2099 грн.</h3>
+                    <div class="col-4 pl-3">
+                        <h6 v-if="data.product_info.old_price">
+                            <strike>
+                                [[ data.product_info.old_price ]] {{ main_currency }}.
+                            </strike>
+                        </h6>
+                        <h4><span class="my-color-red">
+                            [[ data.product_info.price ]] {{ main_currency }}.
+                        </span></h4>
                     </div>
                     <div class="col-8 text-center">
                         <button class="btn btn-success">
@@ -62,7 +67,6 @@
             </div>
 
             {% include 'product/seller.html' %}
-
         </div>
     </div>
     <div class="row">
@@ -80,13 +84,18 @@
             product_info: {}
         }
 
-        init_state = {}
+        init_state = {
+            product_info: {
+                loading: false
+            }
+        }
 
         init_methods = {
             do_init() {
                 this.do_load_product_info()
             },
             do_load_product_info() {
+                this.state.product_info.loading = true
                 this.axios_get(_url=this.urls.do_product_info)
                 .then(resp => {
                     if (resp.status == 200) {
@@ -95,7 +104,7 @@
                 }).catch(() => {
 
                 }).finally(() => {
-
+                    this.state.product_info.loading = true
                 })
             }
         }

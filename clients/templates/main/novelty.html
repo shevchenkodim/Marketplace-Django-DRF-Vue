@@ -45,7 +45,8 @@
                         [[ product.price ]] {{ main_currency }}.
                     </span></h5>
                 </div>
-                <span v-if="product.is_available" class="text-success">
+                <span v-if="product.is_available" class="badge badge-success">
+                    <i class="fas fa-check"></i>
                     Є в наявності
                 </span>
                 <span v-else class="badge badge-danger">
