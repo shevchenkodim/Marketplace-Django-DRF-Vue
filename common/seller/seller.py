@@ -8,10 +8,10 @@ class SellerModel(SeoModel):
     """ Seller model """
     name = models.CharField(max_length=125, unique=True, db_index=True)
     code_name = models.CharField(max_length=125, unique=True, db_index=True)
-    slug = models.SlugField(max_length=125, unique=True)
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    image_logo = models.ImageField(upload_to='seller/logo', blank=True, null=True)
 
     # def get_absolute_url(self):
     #     return reverse('client:products_for_category_index', kwargs={'slug_c': self.slug})

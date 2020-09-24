@@ -3,11 +3,36 @@ from common.products.categories.categories import CategoryModel
 from django.db import models
 
 
+class TextSizeDict(Dictionaries):
+    """ Text size dict model """
+
+    class Meta:
+        db_table = 'dict_size_colors'
+
+
+class TextColorDict(Dictionaries):
+    """ Text color dict model """
+
+    class Meta:
+        db_table = 'dict_text_colors'
+
+
+class BackgroundColorDict(Dictionaries):
+    """ Background color dict model """
+
+    class Meta:
+        db_table = 'dict_background_colors'
+
+
+class SellerBlockDict(Dictionaries):
+    """ Seller clock dict model """
+
+    class Meta:
+        db_table = 'dict_seller_block'
+
+
 class CurrencyDict(Dictionaries):
     """ Currency dict model """
-
-    def __str__(self):
-        return f'{self.value} [{self.code}]'
 
     class Meta:
         db_table = 'dict_currency'
@@ -16,9 +41,6 @@ class CurrencyDict(Dictionaries):
 class UnitDict(Dictionaries):
     """ Units dict model """
 
-    def __str__(self):
-        return f'{self.value} [{self.code}]'
-
     class Meta:
         db_table = 'dict_unit'
 
@@ -26,9 +48,6 @@ class UnitDict(Dictionaries):
 class CharacteristicHandbookDict(Dictionaries):
     """ Characteristic handbook dict model """
     category_id = models.ForeignKey(CategoryModel, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f'{self.value} [{self.code}]'
 
     class Meta:
         db_table = 'dict_characteristic_handbook'
@@ -39,9 +58,6 @@ class BrandDict(Dictionaries):
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return f'{self.value} [{self.code}]'
 
     class Meta:
         db_table = 'dict_brand'
