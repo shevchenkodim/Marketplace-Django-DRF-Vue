@@ -15,3 +15,7 @@ class SellerBlockInfo(CustomizationOfAppearance):
 
     def __str__(self):
         return f"{self.block.code}, {self.seller_id.name}"
+
+
+class SellerBlockItems(models.Model):
+    seller_block_info = models.ForeignKey(SellerBlockInfo, on_delete=models.CASCADE)
