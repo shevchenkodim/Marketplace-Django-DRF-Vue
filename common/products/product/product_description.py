@@ -15,3 +15,8 @@ class ProductDescription(models.Model):
 
     def __str__(self):
         return self.title
+
+    @staticmethod
+    def get_description_by_product(product_id):
+        return [{"title": description.title, "description": description.description} for description in
+                ProductDescription.objects.filter(product_id__id=product_id)]

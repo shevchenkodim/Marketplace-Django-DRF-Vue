@@ -43,8 +43,22 @@ class CharacteristicProduct(models.Model):
     attribute_id = models.ForeignKey(CharacteristicHandbookDict, on_delete=models.CASCADE)
     value = models.ForeignKey(CharacteristicAttributes, on_delete=models.CASCADE)
 
+    class Meta:
+        db_table = 'characteristic_products'
+
     def __str__(self):
         return f'{self.product_id} - {self.attribute_id} - {self.value}'
 
-    class Meta:
-        db_table = 'characteristic_products'
+    @staticmethod
+    def get_characteristic_by_product(product_id):
+        characteristic_list = list()
+        characteristic_prod = set(CharacteristicProduct.objects.filter(product_id__product_id=product_id)
+                                  .values_list('attribute_id_id', flat=True))
+        for character in characteristic_prod:
+            characteristic_obj = dict()
+            characteristic_obj['attribute'] = CharacteristicHandbookDict.objects.get(id=character).value
+            characteristic_obj['values'] = CharacteristicProduct.objects.filter(product_id__product_id=product_id,
+                                                                                attribute_id=character).values_list(
+                'value__name', flat=True)
+            characteristic_list.append(characteristic_obj)
+        return characteristic_list

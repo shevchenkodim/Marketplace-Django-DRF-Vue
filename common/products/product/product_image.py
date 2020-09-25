@@ -16,5 +16,6 @@ class ProductImage(models.Model):
     def __str__(self):
         return self.image.url
 
-    # def get_absolute_url(self):
-    #     return ''
+    @staticmethod
+    def get_images_by_product(product_id):
+        return [{"url": image.image.url} for image in ProductImage.objects.filter(product_id__id=product_id)]
