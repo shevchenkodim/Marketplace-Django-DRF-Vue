@@ -44,6 +44,18 @@ class ProductView(TemplateView):
         context["product_id"] = self.kwargs['slug_p']
         context["do_product_info_url"] = reverse('client_api:get_product_info',
                                                  kwargs={'slug_p': self.kwargs['slug_p']})
+        context["do_seller_info_url"] = reverse('client_api:get_seller_info',
+                                                kwargs={'slug_p': self.kwargs['slug_p']})
+        return context
+
+
+@method_decorator(decorators_any, name='dispatch')
+class SellerView(TemplateView):
+    """Seller page"""
+    template_name = "seller/index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         return context
 
 

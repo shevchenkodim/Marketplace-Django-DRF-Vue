@@ -23,27 +23,11 @@ class BackgroundColorDict(Dictionaries):
         db_table = 'dict_background_colors'
 
 
-class SellerBlockDict(Dictionaries):
-    """ Seller block dict model """
-
-    class Meta:
-        db_table = 'dict_seller_block'
-
-
 class IconDict(Dictionaries):
     """ Icon dict model """
 
     class Meta:
         db_table = 'dict_icon'
-
-
-class SellerBlockItemDict(Dictionaries):
-    """ Item seller block dict model """
-    block_id = models.ForeignKey(SellerBlockDict, on_delete=models.CASCADE)
-    icon = models.ForeignKey(IconDict, on_delete=models.CASCADE)
-
-    class Meta:
-        db_table = 'dict_seller_block_item'
 
 
 class CurrencyDict(Dictionaries):

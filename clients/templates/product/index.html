@@ -7,6 +7,7 @@
 {% block content %}
     <script type="application/javascript">
         var do_product_info_url = '{{ do_product_info_url|safe }}'
+        var do_seller_info_url = '{{ do_seller_info_url|safe }}'
     </script>
 
     <h3>[[ data.product_info.product_name ]]</h3>
@@ -77,22 +78,27 @@
     </div>
     <script type="application/javascript">
         init_urls = {
-            do_product_info: do_product_info_url
+            do_product_info: do_product_info_url,
+            do_seller_info: do_seller_info_url
         }
 
         init_data = {
-            product_info: {}
+            product_info: {
+                product_images: null
+            },
+            seller_info: null
         }
 
         init_state = {
             product_info: {
                 loading: false
-            }
+            },
         }
 
         init_methods = {
             do_init() {
                 this.do_load_product_info()
+                this.do_load_seller_info()
             },
             do_load_product_info() {
                 this.state.product_info.loading = true
@@ -104,9 +110,22 @@
                 }).catch(() => {
 
                 }).finally(() => {
-                    this.state.product_info.loading = true
+                    this.state.product_info.loading = false
+                })
+            },
+            do_load_seller_info() {
+                this.axios_get(_url=this.urls.do_seller_info)
+                .then(resp => {
+                    if (resp.status == 200) {
+                        this.data.seller_info = resp.data.data
+                    }
+                }).catch(() => {
+
+                }).finally(() => {
+
                 })
             }
+
         }
     </script>
 

@@ -11,20 +11,9 @@ from common.seller.seller import SellerModel
 from common.models import User
 from common.access.access import AccessRole, UserRole
 from common.dictionaries.dictionaries import BrandDict, UnitDict, CurrencyDict, \
-    TextSizeDict, TextColorDict, BackgroundColorDict, SellerBlockDict, IconDict, SellerBlockItemDict
+    TextSizeDict, TextColorDict, BackgroundColorDict, IconDict
 from common.geo.geo import CityModel, CountryModel, DistrictModel, IpAddressModel
 from common.geo.user_location_history import UserLocationHistoryModel
-from common.seller.seller_block_info.seller_block_info import SellerBlockInfo, SellerBlockItems
-
-
-@admin.register(SellerBlockInfo)
-class SellerBlockInfoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'block', 'seller_id', 'order_id')
-
-
-@admin.register(SellerBlockItems)
-class SellerBlockItemsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'seller_block_info', 'item', 'order_id')
 
 
 @admin.register(ProductDescription)
@@ -135,6 +124,4 @@ class CurrencyDictAdmin(admin.ModelAdmin):
 admin.site.register(TextSizeDict)
 admin.site.register(TextColorDict)
 admin.site.register(BackgroundColorDict)
-admin.site.register(SellerBlockDict)
 admin.site.register(IconDict)
-admin.site.register(SellerBlockItemDict)
