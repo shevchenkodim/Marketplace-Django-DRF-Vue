@@ -1,7 +1,8 @@
 from django.contrib import admin
 from common.products.categories.categories import CategoryModel
 from common.clients.sliders.main_sliders import MainCarouselModel
-from common.products.characteristic.characteristic import CharacteristicAttributes, CharacteristicProduct
+from common.products.characteristic.characteristic import CharacteristicAttributes, CharacteristicProduct, \
+    CharacteristicHandbookDict
 from common.products.comments.comments import ProductComment
 from common.products.product.product import Product
 from common.products.product.product_description import ProductDescription
@@ -9,9 +10,21 @@ from common.products.product.product_image import ProductImage
 from common.seller.seller import SellerModel
 from common.models import User
 from common.access.access import AccessRole, UserRole
-from common.dictionaries.dictionaries import BrandDict, UnitDict, CharacteristicHandbookDict, CurrencyDict
+from common.dictionaries.dictionaries import BrandDict, UnitDict, CurrencyDict, \
+    TextSizeDict, TextColorDict, BackgroundColorDict, SellerBlockDict, IconDict, SellerBlockItemDict
 from common.geo.geo import CityModel, CountryModel, DistrictModel, IpAddressModel
 from common.geo.user_location_history import UserLocationHistoryModel
+from common.seller.seller_block_info.seller_block_info import SellerBlockInfo, SellerBlockItems
+
+
+@admin.register(SellerBlockInfo)
+class SellerBlockInfoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'block', 'seller_id', 'order_id')
+
+
+@admin.register(SellerBlockItems)
+class SellerBlockItemsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'seller_block_info', 'item', 'order_id')
 
 
 @admin.register(ProductDescription)
@@ -117,3 +130,11 @@ class BrandDictAdmin(admin.ModelAdmin):
 @admin.register(CurrencyDict)
 class CurrencyDictAdmin(admin.ModelAdmin):
     list_display = ('id', 'value', 'code')
+
+
+admin.site.register(TextSizeDict)
+admin.site.register(TextColorDict)
+admin.site.register(BackgroundColorDict)
+admin.site.register(SellerBlockDict)
+admin.site.register(IconDict)
+admin.site.register(SellerBlockItemDict)

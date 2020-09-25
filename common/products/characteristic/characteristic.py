@@ -1,6 +1,7 @@
 from django.db import models
 
-from common.dictionaries.dictionaries import CharacteristicHandbookDict, UnitDict
+from common.dictionaries.base import Dictionaries
+from common.dictionaries.dictionaries import UnitDict
 from common.products.categories.categories import CategoryModel
 from common.products.product.product import Product
 
@@ -10,6 +11,14 @@ CHOICE_FIELDS_TYPE = [
     ('Float', 'Float'),
     ('Boolean', 'Boolean'),
 ]
+
+
+class CharacteristicHandbookDict(Dictionaries):
+    """ Characteristic handbook dict model """
+    category_id = models.ForeignKey(CategoryModel, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'dict_characteristic_handbook'
 
 
 class CharacteristicAttributes(models.Model):

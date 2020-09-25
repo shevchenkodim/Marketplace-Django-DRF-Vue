@@ -1,5 +1,4 @@
 from common.dictionaries.base import Dictionaries
-from common.products.categories.categories import CategoryModel
 from django.db import models
 
 
@@ -59,14 +58,6 @@ class UnitDict(Dictionaries):
 
     class Meta:
         db_table = 'dict_unit'
-
-
-class CharacteristicHandbookDict(Dictionaries):
-    """ Characteristic handbook dict model """
-    category_id = models.ForeignKey(CategoryModel, on_delete=models.CASCADE)
-
-    class Meta:
-        db_table = 'dict_characteristic_handbook'
 
 
 class BrandDict(Dictionaries):

@@ -7,5 +7,5 @@ def client_data_context(request):
     context = dict()
     context["DEBUG"] = settings.DEBUG
     context["categories_list"] = CategoryModel.objects.all()
-    context["main_currency"] = CurrencyDict.objects.get(code='UAH').value
+    context["main_currency"] = CurrencyDict.objects.get_or_create(code='UAH', value='грн')[0].value
     return context

@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-
+from common.dictionaries.dictionaries import IconDict
 from common.seo.seo import SeoModel
 from mptt.models import MPTTModel, TreeForeignKey
 
@@ -14,7 +14,7 @@ class CategoryModel(MPTTModel, SeoModel):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    icon = models.CharField(max_length=50, blank=True)
+    icon = models.ForeignKey(IconDict, on_delete=models.CASCADE)
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
     def get_absolute_url(self):
