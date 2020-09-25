@@ -106,7 +106,7 @@ class MainCarouselModelAdmin(admin.ModelAdmin):
 
 @admin.register(SellerModel)
 class SellerModelAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'code_name', 'slug')
+    list_display = ('id', 'name', 'code_name')
 
 
 @admin.register(BrandDict)

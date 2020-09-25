@@ -1,5 +1,5 @@
 from django.db import models
-from common.dictionaries.dictionaries import SellerBlockDict
+from common.dictionaries.dictionaries import SellerBlockDict, SellerBlockItemDict
 from common.front_tools.front_tools import CustomizationOfAppearance
 from common.seller.seller import SellerModel
 
@@ -19,3 +19,11 @@ class SellerBlockInfo(CustomizationOfAppearance):
 
 class SellerBlockItems(models.Model):
     seller_block_info = models.ForeignKey(SellerBlockInfo, on_delete=models.CASCADE)
+    item = models.ForeignKey(SellerBlockItemDict, on_delete=models.CASCADE)
+    order_id = models.IntegerField(default=0)
+
+    class Meta:
+        db_table = 'seller_block_item'
+
+    def __str__(self):
+        return f"{self.seller_block_info.block.code}, {self.item.code}"
