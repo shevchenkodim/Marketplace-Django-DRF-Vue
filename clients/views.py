@@ -46,6 +46,8 @@ class ProductView(TemplateView):
                                                  kwargs={'slug_p': self.kwargs['slug_p']})
         context["do_seller_info_url"] = reverse('client_api:get_seller_info',
                                                 kwargs={'slug_p': self.kwargs['slug_p']})
+        context["do_comments_list_url"] = reverse('client_api:get_comments',
+                                                  kwargs={'slug_p': self.kwargs['slug_p']})
         return context
 
 

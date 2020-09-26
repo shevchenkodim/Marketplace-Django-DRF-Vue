@@ -1,115 +1,53 @@
-<div class="mb-3">
+<div v-if="data.comments.comments_list" class="mb-3">
     <h3>Відгуки</h3>
     <div class="comment-widgets scrollable ps-container ps-theme-default"
          data-ps-id="aa2cada3-0530-41cd-6bee-a179f6aab841">
-        <!-- Comment Row -->
-        <div class="d-flex flex-row comment-row m-t-0">
-            <div class="p-2">
-                <img src="https://www.wrappixel.com/demos/free-admin-templates/matrix-admin-bt4/assets/images/users/4.jpg" alt="user" width="50" class="rounded-circle">
-            </div>
-            <div class="comment-text w-100">
-                <div class="d-flex justify-content-between">
-                    <h6 class="font-medium">James Anderson</h6>
-                    <div>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="far fa-star text-warning"></i>
+        <div v-for="comment in data.comments.comments_list">
+            <div class="d-flex flex-row comment-row m-t-0">
+                <div class="p-2">
+                    <img v-bind:src="comment.owner_image" alt="user" width="50" class="rounded-circle">
+                </div>
+                <div class="comment-text w-100">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="font-medium">[[ comment.owner ]]</h6>
+                        <div>
+                            <span v-html="render_star_rating(comment.rating_stars)"></span>
+                        </div>
+                    </div>
+
+                    <span class="m-b-15 d-block">
+                        [[ comment.text ]]
+                    </span>
+                    <div class="comment-footer">
+                        <span class="text-muted float-right">
+                            [[ comment.date_time_add ]]
+                        </span>
+                        <span class="pl-2 pr-2">
+                            <i class="far fa-thumbs-up"></i> [[ comment.likes_count ]]
+                        </span>
+                        <span class="pl-2 pr-2">
+                            <i class="far fa-thumbs-down"></i> [[ comment.dislikes_count ]]
+                        </span>
                     </div>
                 </div>
-
-                <span class="m-b-15 d-block">
-                    Lorem Ipsum is simply dummy text of the
-                    printing and type setting industry.
-                </span>
-                <div class="comment-footer">
-                    <span class="text-muted float-right">
-                        April 14, 2016
-                    </span>
-                    <button type="button" class="btn btn-success btn-sm">
-                        Відповісти
-                    </button>
-                    <span class="pl-2 pr-2">
-                        <i class="far fa-thumbs-up"></i> 10
-                    </span>
-                    <span class="pl-2 pr-2">
-                        <i class="far fa-thumbs-down"></i> 0
-                    </span>
-                </div>
             </div>
-        </div>
-        <!-- Comment Row -->
-        <div class="d-flex flex-row comment-row">
-            <div class="p-2">
-                <img src="https://www.wrappixel.com/demos/free-admin-templates/matrix-admin-bt4/assets/images/users/4.jpg" alt="user" width="50" class="rounded-circle">
-            </div>
-            <div class="comment-text w-100">
-                <div class="d-flex justify-content-between">
-                    <h6 class="font-medium">James Anderson</h6>
-                    <div>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="far fa-star text-warning"></i>
+            <div v-for="answer in comment.comment_answer" class="d-flex flex-row comment-row m-t-0" style="padding-left: 100px">
+                <div class="comment-text w-100">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="font-medium">[[ answer.owner ]]</h6>
+                        <div>
+                            <span class="text-muted float-right">
+                                [[ answer.date_time_add ]]
+                            </span>
+                        </div>
                     </div>
-                </div>
 
-                <span class="m-b-15 d-block">
-                    Lorem Ipsum is simply dummy text of the
-                    printing and type setting industry.
-                </span>
-                <div class="comment-footer">
-                    <span class="text-muted float-right">
-                        April 14, 2016
-                    </span>
-                    <button type="button" class="btn btn-success btn-sm">
-                        Відповісти
-                    </button>
-                    <span class="pl-2 pr-2">
-                        <i class="far fa-thumbs-up"></i> 10
-                    </span>
-                    <span class="pl-2 pr-2">
-                        <i class="far fa-thumbs-down"></i> 0
+                    <span class="m-b-15 d-block">
+                        [[ answer.text ]]
                     </span>
                 </div>
-            </div>
-        </div>
-        <!-- Comment Row -->
-        <div class="d-flex flex-row comment-row">
-            <div class="p-2">
-                <img src="https://www.wrappixel.com/demos/free-admin-templates/matrix-admin-bt4/assets/images/users/4.jpg" alt="user" width="50" class="rounded-circle">
-            </div>
-            <div class="comment-text w-100">
-                <div class="d-flex justify-content-between">
-                    <h6 class="font-medium">James Anderson</h6>
-                    <div>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="far fa-star text-warning"></i>
-                    </div>
-                </div>
-
-                <span class="m-b-15 d-block">
-                    Lorem Ipsum is simply dummy text of the
-                    printing and type setting industry.
-                </span>
-                <div class="comment-footer">
-                    <span class="text-muted float-right">
-                        April 14, 2016
-                    </span>
-                    <button type="button" class="btn btn-success btn-sm">
-                        Відповісти
-                    </button>
-                    <span class="pl-2 pr-2">
-                        <i class="far fa-thumbs-up"></i> 10
-                    </span>
-                    <span class="pl-2 pr-2">
-                        <i class="far fa-thumbs-down"></i> 0
-                    </span>
+                <div class="p-2">
+                    <img v-bind:src="answer.owner_image" alt="user" width="50" class="rounded-circle">
                 </div>
             </div>
         </div>
@@ -123,4 +61,7 @@
             </div>
         </div>
     </div>
+</div>
+<div v-else class="row d-flex justify-content-center">
+    {% include 'base/spiner_loader_for_blocks.html' %}
 </div>

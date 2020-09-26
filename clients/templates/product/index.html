@@ -8,6 +8,7 @@
     <script type="application/javascript">
         var do_product_info_url = '{{ do_product_info_url|safe }}'
         var do_seller_info_url = '{{ do_seller_info_url|safe }}'
+        var do_comments_list_url = '{{ do_comments_list_url|safe }}'
     </script>
 
     <h3>[[ data.product_info.product_name ]]</h3>
@@ -79,7 +80,8 @@
     <script type="application/javascript">
         init_urls = {
             do_product_info: do_product_info_url,
-            do_seller_info: do_seller_info_url
+            do_seller_info: do_seller_info_url,
+            do_comments_list: do_comments_list_url
         }
 
         init_data = {
@@ -87,7 +89,10 @@
                 product_images: null,
                 characteristic_list: null
             },
-            seller_info: null
+            seller_info: null,
+            comments: {
+                comments_list: null,
+            }
         }
 
         init_state = {
@@ -100,6 +105,7 @@
             do_init() {
                 this.do_load_product_info()
                 this.do_load_seller_info()
+                this.do_load_comments_list()
             },
             do_load_product_info() {
                 this.state.product_info.loading = true
@@ -107,6 +113,9 @@
                 .then(resp => {
                     if (resp.status == 200) {
                         this.data.product_info = resp.data.data
+                        if (resp.data.data.errors) {
+                            toastr.error(resp.data.data.errors.message)
+                        }
                     }
                 }).catch(() => {
 
@@ -119,6 +128,24 @@
                 .then(resp => {
                     if (resp.status == 200) {
                         this.data.seller_info = resp.data.data
+                        if (resp.data.data.errors) {
+                            toastr.error(resp.data.data.errors.message)
+                        }
+                    }
+                }).catch(() => {
+
+                }).finally(() => {
+
+                })
+            },
+            do_load_comments_list() {
+                this.axios_get(_url=this.urls.do_comments_list)
+                .then(resp => {
+                    if (resp.status == 200) {
+                        this.data.comments.comments_list = resp.data.data.comments_list
+                        if (resp.data.data.errors) {
+                            toastr.error(resp.data.data.errors.message)
+                        }
                     }
                 }).catch(() => {
 
