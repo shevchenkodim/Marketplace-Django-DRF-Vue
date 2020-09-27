@@ -14,7 +14,7 @@ def get_comments_by_product(request, slug_p):
     data = dict()
     state = dict()
     page = int(request.GET.get('page', 0))
-    page_size = 1
+    page_size = 10
     first = int(page * page_size)
     try:
         product = Product.objects.get(product_id=slug_p)

@@ -10,7 +10,7 @@
         </li>
 
         <li v-for="page in state.count" class="page-item"
-            v-if="page < state.current_count + 4 && page !== state.count && page > state.current_count - 3"
+            v-if="page < state.current_count + 3 && page !== state.count && page > state.current_count - 1"
             v-bind:class="{disabled: state.current_count+1 == page}">
             <a class="page-link" href="#!"
                 v-on:click="do_page(page-1, $event)">
@@ -18,7 +18,7 @@
             </a>
         </li>
 
-        <li v-if="state.count > 4 && state.count !== state.current_count+1" class="page-item">
+        <li v-if="state.count >= 4 && state.current_count + 4 <= state.count" class="page-item">
             <a class="page-link" href="#!">...</a>
         </li>
 
