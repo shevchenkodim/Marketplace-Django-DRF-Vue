@@ -1,4 +1,4 @@
-<div v-if="state.count > 0" class="d-flex justify-content-center align-items-center">
+<div v-if="state.count > 1" class="d-flex justify-content-center align-items-center">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item">
@@ -31,7 +31,8 @@
         </li>
 
         <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
+          <a class="page-link" href="#!" aria-label="Next"
+            v-on:click="do_page(state.current_count < state.count - 1 ? state.current_count + 1 : state.count - 1, $event)">
             <span aria-hidden="true">»</span>
             <span class="sr-only">Next</span>
           </a>
