@@ -1,3 +1,5 @@
+import math
+
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -11,11 +13,17 @@ from common.products.comments.comments import ProductComment
 def get_comments_by_product(request, slug_p):
     data = dict()
     state = dict()
+    page = int(request.GET.get('page', 0))
+    page_size = 1
+    first = int(page * page_size)
     try:
         product = Product.objects.get(product_id=slug_p)
         comments = ProductComment.objects.filter(product_id__product_id=product.product_id, reply_to=None).order_by('-date_time_add')
+        rows_count = comments.count()
+        rows_db = comments[first:first + page_size]
+        pages_count = math.floor(rows_count / page_size) + (1 if rows_count % page_size > 0 else 0)
         comments_list = list()
-        for comment in comments:
+        for comment in rows_db:
             com_data = dict()
             com_data["owner"] = comment.owner_id.get_full_name()
             com_data["owner_image"] = comment.owner_id.image.url if comment.owner_id.image.url else '/assets/images' \
@@ -33,6 +41,7 @@ def get_comments_by_product(request, slug_p):
                                           for answer in ProductComment.objects.filter(reply_to_id=comment.id)]
             comments_list.append(com_data)
         data["comments_list"] = comments_list
+        state["pages"] = {'count': pages_count}
     except Product.DoesNotExist:
         data = {"errors": {"message": "Такого продукта немає"}}
         return Response(data, status=status.HTTP_400_BAD_REQUEST)

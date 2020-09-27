@@ -99,13 +99,15 @@
             product_info: {
                 loading: false
             },
+            count: 0,
+            current_count: 0,
         }
 
         init_methods = {
             do_init() {
                 this.do_load_product_info()
                 this.do_load_seller_info()
-                this.do_load_comments_list()
+                this.do_page()
             },
             do_load_product_info() {
                 this.state.product_info.loading = true
@@ -139,10 +141,11 @@
                 })
             },
             do_load_comments_list() {
-                this.axios_get(_url=this.urls.do_comments_list)
+                this.axios_get(_url=this.urls.do_comments_list + '?page=' + this.state.current_count)
                 .then(resp => {
                     if (resp.status == 200) {
                         this.data.comments.comments_list = resp.data.data.comments_list
+                        this.state.count = resp.data.state.pages.count
                         if (resp.data.data.errors) {
                             toastr.error(resp.data.data.errors.message)
                         }
@@ -152,6 +155,13 @@
                 }).finally(() => {
 
                 })
+            },
+            do_page(page, event) {
+                if (event) {
+                    event.preventDefault();
+                }
+                this.state.current_count = page ? page : 0;
+                this.do_load_comments_list()
             }
 
         }

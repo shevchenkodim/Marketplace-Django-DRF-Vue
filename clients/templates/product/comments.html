@@ -1,5 +1,10 @@
+{% load custom_tags %}
+
 <div v-if="data.comments.comments_list" class="mb-3">
-    <h3>Відгуки</h3>
+    <div class="d-flex justify-content-between">
+        <h3>Відгуки</h3>
+        {% paginator_tag %}
+    </div>
     <div class="comment-widgets scrollable ps-container ps-theme-default"
          data-ps-id="aa2cada3-0530-41cd-6bee-a179f6aab841">
         <div v-for="comment in data.comments.comments_list">
