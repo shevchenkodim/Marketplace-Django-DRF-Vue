@@ -1,4 +1,6 @@
 from django.db import models
+from django.http import Http404
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 
 from common.dictionaries.dictionaries import BrandDict
@@ -39,6 +41,12 @@ class Product(SeoModel):
         if not self.product_id:
             self.product_id = generate_product_id()
         super(Product, self).save(*args, **kwargs)
+
+    @staticmethod
+    def check_for_category(p_id, c_slug):
+        product = get_object_or_404(Product, product_id=p_id)
+        if not product.category_id.slug == c_slug:
+            raise Http404
 
 
 def generate_product_id():

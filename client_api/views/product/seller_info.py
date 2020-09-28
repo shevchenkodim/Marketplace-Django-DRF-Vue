@@ -20,7 +20,7 @@ def get_seller_info_by_product(request, slug_p):
         data["phone"] = seller.phone
         data["email"] = seller.email
         data["address"] = seller.address
-    except Product.DoesNotExist:
+    except (Product.DoesNotExist, SellerModel.DoesNotExist):
         data = {"errors": {"message": "Такого продукта немає"}}
-        return Response(data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data, status=status.HTTP_404_NOT_FOUND)
     return Response({"data": data, "state": state}, status=status.HTTP_200_OK)

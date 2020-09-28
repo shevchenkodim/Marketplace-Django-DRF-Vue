@@ -44,5 +44,5 @@ def get_comments_by_product(request, slug_p):
         state["pages"] = {'count': pages_count}
     except Product.DoesNotExist:
         data = {"errors": {"message": "Такого продукта немає"}}
-        return Response(data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data, status=status.HTTP_404_NOT_FOUND)
     return Response({"data": data, "state": state}, status=status.HTTP_200_OK)

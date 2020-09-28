@@ -28,5 +28,5 @@ def get_product_info(request, slug_p):
         data['characteristic_list'] = CharacteristicProduct.get_characteristic_by_product(product.product_id)
     except Product.DoesNotExist:
         data = {"errors": {"message": "Такого продукта немає"}}
-        return Response(data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data, status=status.HTTP_404_NOT_FOUND)
     return Response({"data": data, "state": state}, status=status.HTTP_200_OK)
