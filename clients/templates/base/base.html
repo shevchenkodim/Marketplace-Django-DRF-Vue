@@ -28,13 +28,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static '/assets/images/favicon.png' %}">
     <!-- Custom CSS -->
     <link href="{% static '/assets/libs/flot/css/float-chart.css' %}" rel="stylesheet">
-    {#    <link href="{% static '/css/fotorama.css' %}/" rel="stylesheet">#}
-    <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{% static '/css/style.min.css' %}" rel="stylesheet">
     <link href="{% static '/css/main_style.css' %}" rel="stylesheet">
     <link href="{% static '/css/toastr.min.css' %}" rel="stylesheet">
+    <link href="{% static '/css/owl.carousel.min.css' %}" rel="stylesheet">
 
     <!-- Start block css -->
     {% block css %}
@@ -137,7 +136,8 @@
     <script src="{% static '/assets/libs/flot/jquery.flot.crosshair.js' %}"></script>
     <script src="{% static '/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
     <script src="{% static '/js/pages/chart/chart-page-init.js' %}"></script>
-    <script src="{% static '/js/fotorama.js' %}"></script>
+    <script src="{% static '/js/main_js.js' %}"></script>
+    <script src="{% static '/js/owl.carousel.min.js' %}"></script>
 
     <!-- axios -->
     <script src="{% static '/js/axios.min.js' %}"></script>

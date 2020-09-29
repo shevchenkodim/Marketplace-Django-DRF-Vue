@@ -8,6 +8,10 @@
 /*    padding: 15px;*/
 /*}*/
 
+.avoid-clicks {
+  pointer-events: none;
+}
+
 .product-block{
     margin-right: .5rem!important;
     position: absolute;

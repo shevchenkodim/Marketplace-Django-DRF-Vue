@@ -86,7 +86,7 @@
 
         init_data = {
             product_info: {
-                product_images: null,
+                product_images: [],
                 characteristic_list: null
             },
             seller_info: null,
@@ -96,6 +96,9 @@
         }
 
         init_state = {
+            image_carousel: {
+                main: {url: ''},
+            },
             product_info: {
                 loading: false
             },
@@ -123,6 +126,7 @@
 
                 }).finally(() => {
                     this.state.product_info.loading = false
+                    this.do_carousel_init()
                 })
             },
             do_load_seller_info() {
@@ -162,7 +166,20 @@
                 }
                 this.state.current_count = page ? page : 0;
                 this.do_load_comments_list()
-            }
+            },
+
+            do_carousel_init() {
+                $(document).ready(function(){
+                  $('.owl-carousel').owlCarousel({
+                      margin: 10,
+                      autoWidth: true,
+                  });
+                });
+                this.do_select_new_main_img(url=this.data.product_info.product_images[0].url)
+            },
+            do_select_new_main_img(url) {
+                this.state.image_carousel.main.url = url
+            },
         }
     </script>
 

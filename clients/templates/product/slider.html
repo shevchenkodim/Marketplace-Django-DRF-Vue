@@ -1,10 +1,13 @@
 {% load static %}
 
-<div class="fotorama"
-     data-nav="thumbs"
-     data-allowfullscreen="true">
-  <a v-for="image in data.product_info.product_images"
-     :href="image.url">
-      <img :src="image.url" width="144" height="96">
-  </a>
+<div class="slider">
+    <div class="slider-main mb-2">
+        <img width="100%" :src="state.image_carousel.main.url">
+    </div>
+    <div class="owl-carousel owl-theme">
+      <div class="item" v-for="(image, index) in data.product_info.product_images">
+          <img v-bind:class="{'avoid-clicks border border-dark': image.url == state.image_carousel.main.url}" v-on:click="do_select_new_main_img(image=image.url)"
+               :src="image.url" style="height: 100px; width: auto;">
+      </div>
+    </div>
 </div>
