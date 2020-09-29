@@ -1,15 +1,14 @@
 <div v-if="data.seller_info">
-    <div class="mb-3 border">
-        <div class="p-2">
+    <div class="card border">
+        <div class="card-header bg-info">
             <div class="text-center">
                 <img height="70" v-bind:src="data.seller_info.logo">
             </div>
-            <div class="text-center">
-                <h5 class="card-title mb-0">[[ data.seller_info.name ]]</h5>
+            <div class="card-title text-white text-center">
+                <h4>[[ data.seller_info.name ]]</h4>
             </div>
         </div>
-        <hr class="p-0 m-0">
-        <div class="p-2">
+        <div class="card-body">
             <div class="row d-flex align-items-center">
                 <div class="col-1 text-center">
                     <i class="fas fa-external-link-square-alt"></i>
@@ -53,12 +52,13 @@
         </div>
     </div>
 
-    <div class="mb-3 border">
-        <div class="p-2">
-            <h6 class="card-title mb-0">Доступні способи доставки</h6>
+    <div class="card border">
+        <div class="card-header bg-success">
+            <div class="card-title text-white">
+                Доступні способи доставки
+            </div>
         </div>
-        <hr class="p-0 m-0">
-        <div class="p-2">
+        <div class="card-body">
             <div class="row d-flex align-items-center">
                 <div class="col-1 text-center">
                     <i class="fas fa-arrows-alt"></i>
@@ -92,14 +92,15 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
 
-    <div class="mb-3 border">
-        <div class="p-2">
-            <h6 class="card-title mb-0">Способи оплати</h6>
+    <div class="card border">
+        <div class="card-header my-bg-color-info">
+            <div class="card-title text-white">
+                Способи оплати
+            </div>
         </div>
-        <hr class="p-0 m-0">
-        <div class="p-2">
+        <div class="card-body">
             <div class="row d-flex align-items-center">
                 <div class="col-1 text-center">
                     <i class="far fa-money-bill-alt"></i>
@@ -125,14 +126,15 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
 
-    <div class="mb-3 border">
-        <div class="p-2">
-            <h6 class="card-title mb-0">Гарантія</h6>
+    <div class="card border">
+        <div class="card-header bg-warning">
+            <div class="card-title text-white">
+                Гарантія
+            </div>
         </div>
-        <hr class="p-0 m-0">
-        <div class="p-2">
+        <div class="card-body">
             12 місяців
             <br>
             Обмін/повернення товару впродовж 14 днів
@@ -142,3 +144,144 @@
 <div v-else class="row d-flex justify-content-center">
     {% include 'base/spiner_loader_for_blocks.html' %}
 </div>
+
+{#    <div class="mb-3 border">#}
+{#        <div class="p-2">#}
+{#            <div class="text-center">#}
+{#                <img height="70" v-bind:src="data.seller_info.logo">#}
+{#            </div>#}
+{#            <div class="text-center">#}
+{#                <h5 class="card-title mb-0">[[ data.seller_info.name ]]</h5>#}
+{#            </div>#}
+{#        </div>#}
+{#        <hr class="p-0 m-0">#}
+{#        <div class="p-2">#}
+{#            <div class="row d-flex align-items-center">#}
+{#                <div class="col-1 text-center">#}
+{#                    <i class="fas fa-external-link-square-alt"></i>#}
+{#                </div>#}
+{#                <div class="col-11">#}
+{#                    <a v-bind:href="data.seller_info.absolute_url">Сторінка продавця</a>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row d-flex align-items-center">#}
+{#                <div class="col-1 text-center">#}
+{#                    <i class="fas fa-map-marker-alt"></i>#}
+{#                </div>#}
+{#                <div class="col-11">#}
+{#                    Місце знаходження: <a href="#!">[[ data.seller_info.address ]]</a>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row d-flex align-items-center">#}
+{#                <div class="col-1 text-center">#}
+{#                    <i class="far fa-clock"></i>#}
+{#                </div>#}
+{#                <div class="col-11">#}
+{#                    Графік роботи <i class="fas fa-angle-down"></i>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row d-flex align-items-center">#}
+{#                <div class="col-1 text-center">#}
+{#                    <i class="fas fa-phone"></i>#}
+{#                </div>#}
+{#                <div class="col-11">#}
+{#                    <a href="#!">[[ data.seller_info.phone ]]</a>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row d-flex align-items-center">#}
+{#                <div class="col-1 text-center">#}
+{#                    <i class="fas fa-envelope"></i>#}
+{#                </div>#}
+{#                <div class="col-11">#}
+{#                    <a href="#!">[[ data.seller_info.email ]]</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+{#    <div class="mb-3 border">#}
+{#        <div class="p-2">#}
+{#            <h6 class="card-title mb-0">Доступні способи доставки</h6>#}
+{#        </div>#}
+{#        <hr class="p-0 m-0">#}
+{#        <div class="p-2">#}
+{#            <div class="row d-flex align-items-center">#}
+{#                <div class="col-1 text-center">#}
+{#                    <i class="fas fa-arrows-alt"></i>#}
+{#                </div>#}
+{#                <div class="col-11">#}
+{#                    Самовивіз з Нової Пошти#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row d-flex align-items-center">#}
+{#                <div class="col-1 text-center">#}
+{#                    <i class="fas fa-map-marker-alt"></i>#}
+{#                </div>#}
+{#                <div class="col-11">#}
+{#                    Самовивіз з УкрПошти#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row d-flex align-items-center">#}
+{#                <div class="col-1 text-center">#}
+{#                    <i class="fas fa-box"></i>#}
+{#                </div>#}
+{#                <div class="col-11">#}
+{#                    Самовивіз з JustIn#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row d-flex align-items-center">#}
+{#                <div class="col-1 text-center">#}
+{#                    <i class="fas fa-shipping-fast"></i>#}
+{#                </div>#}
+{#                <div class="col-11">#}
+{#                    Доставка від продавця#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+{#    <div class="mb-3 border">#}
+{#        <div class="p-2">#}
+{#            <h6 class="card-title mb-0">Способи оплати</h6>#}
+{#        </div>#}
+{#        <hr class="p-0 m-0">#}
+{#        <div class="p-2">#}
+{#            <div class="row d-flex align-items-center">#}
+{#                <div class="col-1 text-center">#}
+{#                    <i class="far fa-money-bill-alt"></i>#}
+{#                </div>#}
+{#                <div class="col-11">#}
+{#                    Готівкою#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row d-flex align-items-center">#}
+{#                <div class="col-1 text-center">#}
+{#                    <i class="fab fa-cc-visa"></i>#}
+{#                </div>#}
+{#                <div class="col-11">#}
+{#                    Оплата карткою Visa#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row d-flex align-items-center">#}
+{#                <div class="col-1 text-center">#}
+{#                    <i class="fab fa-cc-mastercard"></i>#}
+{#                </div>#}
+{#                <div class="col-11">#}
+{#                    Оплата карткою MasterCard#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+{#    <div class="mb-3 border">#}
+{#        <div class="p-2">#}
+{#            <h6 class="card-title mb-0">Гарантія</h6>#}
+{#        </div>#}
+{#        <hr class="p-0 m-0">#}
+{#        <div class="p-2">#}
+{#            12 місяців#}
+{#            <br>#}
+{#            Обмін/повернення товару впродовж 14 днів#}
+{#        </div>#}
+{#    </div>#}
+

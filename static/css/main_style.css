@@ -25,6 +25,9 @@
 .my-color-orange {
     color: #f16d00;
 }
+.my-color-warning {
+    color: #ffc107;
+}
 .my-color-green {
     color: #098c27;
 }
@@ -34,12 +37,26 @@
 .my-color-dark {
     color: #000000;
 }
+.my-color-lightblue {
+  color: #3c8dbc;
+}
+.my-color-info {
+  color: #17a2b8;
+}
+.my-color-navy {
+  color: #001f3f;
+}
+
+
 
 .my-bg-color-red {
     background-color: #de0015;
 }
 .my-bg-color-orange {
     background-color: #f16d00;
+}
+.my-bg-color-warning {
+    background-color: #ffc107;
 }
 .my-bg-color-green {
     background-color: #098c27;
@@ -49,6 +66,15 @@
 }
 .my-bg-color-dark {
     background-color: #000000;
+}
+.my-bg-color-lightblue {
+  background-color: #3c8dbc;
+}
+.my-bg-color-info {
+  background-color: #17a2b8;
+}
+.my-bg-color-navy {
+  background-color: #001f3f;
 }
 
 .carousel-control-prev-icon,
