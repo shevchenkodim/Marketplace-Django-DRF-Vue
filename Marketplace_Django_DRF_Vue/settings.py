@@ -125,3 +125,80 @@ CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+if DEBUG:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'verbose': {
+                'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+                'style': '{',
+            },
+            'simple': {
+                'format': '{levelname} {message}',
+                'style': '{',
+            },
+        },
+        'filters': {
+            'special': {
+                '()': 'Marketplace_Django_DRF_Vue.SpecialFilter',
+            }
+        },
+        'handlers': {
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+                'formatter': 'simple'
+            },
+            'mail_admins': {
+                'level': 'ERROR',
+                'class': 'django.utils.log.AdminEmailHandler',
+                'filters': ['special']
+            },
+            'file_info': {
+                'level': 'INFO',
+                'class': 'logging.FileHandler',
+                'filename': '/home/app/logs/info.log',
+                'formatter': 'verbose'
+            },
+            'file_auth': {
+                'level': 'INFO',
+                'class': 'logging.FileHandler',
+                'filename': '/home/app/logs/auth.log',
+                'formatter': 'verbose'
+            },
+            'file_services': {
+                'level': 'INFO',
+                'class': 'logging.FileHandler',
+                'filename': '/home/app/logs/services.log',
+                'formatter': 'verbose'
+            }
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['console'],
+                'propagate': True,
+            },
+            'django.request': {
+                'handlers': ['mail_admins'],
+                'level': 'ERROR',
+                'propagate': False,
+            },
+            'Marketplace_Django_DRF_Vue.custom': {
+                'handlers': ['console', 'mail_admins', 'file_info'],
+                'level': 'INFO',
+                'filters': ['special']
+            },
+            'Marketplace_Django_DRF_Vue.auth': {
+                'handlers': ['console', 'file_auth'],
+                'level': 'INFO',
+                'filters': ['special']
+            },
+            'Marketplace_Django_DRF_Vue.services': {
+                'handlers': ['console', 'file_services'],
+                'level': 'INFO',
+                'filters': ['special']
+            }
+        }
+    }
