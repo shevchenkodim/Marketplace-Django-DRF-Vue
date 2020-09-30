@@ -1,3 +1,4 @@
+import logging
 from django.contrib.auth import login
 from django.urls import reverse
 from rest_framework import status
@@ -10,6 +11,8 @@ from common.access.access import UserRole, AccessRole
 from common.geo.user_location_history import UserLocationHistoryModel
 from common.models import User
 from broker.utils.otp_code.otp_code import GenerateOtpCode
+
+logger = logging.getLogger('Marketplace_Django_DRF_Vue.auth')
 
 first, second = "FIRST", "SECOND"
 
@@ -81,8 +84,12 @@ def client_auth(request):
                              "show_otp": True, "otp_editable": False,
                              "show_password": True, "step": second,
                              "password_enabled": True}
+
+                    logger.info(f"Користувач [{client.email}, {client.phone}] Пароль невірний!")
+
                     return Response({"errors": errors, "state": state}, status=status.HTTP_200_OK)
                 login(request, client)
+                logger.info(f"Користувач [{client.email}, {client.phone}] Успішно зробив вхід до системи!")
                 try:
                     UserLocationHistoryModel.create_user_location(request=request, user_id=client.id)
                 except Exception as e:
@@ -117,6 +124,7 @@ def client_auth(request):
                     user=client
                 )
                 login(request, client)
+                logger.info(f"Користувач [{client.email}, {client.phone}] Успішно зробив вхід до системи!")
                 try:
                     UserLocationHistoryModel.create_user_location(request=request, user_id=client.id)
                 except Exception as e:

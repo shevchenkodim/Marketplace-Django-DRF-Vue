@@ -13,6 +13,8 @@ DEBUG = env('DEBUG')
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
+LOG_PATH = os.path.join(BASE_DIR, 'Marketplace_Django_DRF_Vue/log')
+
 ALLOWED_HOSTS = ['127.0.0.1']
 
 INSTALLED_APPS = [
@@ -142,7 +144,7 @@ if DEBUG:
         },
         'filters': {
             'special': {
-                '()': 'Marketplace_Django_DRF_Vue.SpecialFilter',
+                '()': 'Marketplace_Django_DRF_Vue.log.SpecialFilter',
             }
         },
         'handlers': {
@@ -159,19 +161,19 @@ if DEBUG:
             'file_info': {
                 'level': 'INFO',
                 'class': 'logging.FileHandler',
-                'filename': '/home/app/logs/info.log',
+                'filename': f'{LOG_PATH}/info.log',
                 'formatter': 'verbose'
             },
             'file_auth': {
                 'level': 'INFO',
                 'class': 'logging.FileHandler',
-                'filename': '/home/app/logs/auth.log',
+                'filename':  f'{LOG_PATH}/auth.log',
                 'formatter': 'verbose'
             },
             'file_services': {
                 'level': 'INFO',
                 'class': 'logging.FileHandler',
-                'filename': '/home/app/logs/services.log',
+                'filename': f'{LOG_PATH}/services.log',
                 'formatter': 'verbose'
             }
         },
