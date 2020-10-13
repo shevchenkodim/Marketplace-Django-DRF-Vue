@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'mptt',
     'django_cleanup',
     'rest_framework',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -43,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'Marketplace_Django_DRF_Vue.urls'
@@ -128,7 +130,9 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-if DEBUG:
+INTERNAL_IPS = ['127.0.0.1']
+
+if not DEBUG:
     LOGGING = {
         'version': 1,
         'disable_existing_loggers': False,

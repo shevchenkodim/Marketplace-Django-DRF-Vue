@@ -4,7 +4,7 @@
 <!-- Start block products  -->
 <!-- ============================================================== -->
 <!-- @mouseover="hover = true" @mouseleave="hover = false" v-if="hover" -->
-<div class="row el-element-overlay pt-2">
+<div class="row el-element-overlay pt-2" style="min-height: 450px">
     <div @mouseover="data.hover1 = true" @mouseleave="data.hover1 = false" class="col-lg-3 col-md-6" style="position: relative;">
         <div class="card border my-border-radius" v-bind:class="{'product-block shadow-lg': data.hover1}">
             <div class="el-card-item pb-0">
@@ -42,120 +42,6 @@
                 </span>
                 <span v-if="data.hover1">
                     Екран (6.4", Super AMOLED, 2340х1080) / Samsung Exynos 9611 (4 x 2.3 ГГц + 4 x 1.7 ГГц) / квадро основна камера: 64 Мп + 8 Мп + 5 Мп + 5 Мп, фронтальна 32 Мп / RAM 6 ГБ / 128 ГБ вбудованої пам'яті + microSD (до 512 ГБ) / 3G / LTE / GPS / ГЛОНАСС / BDS / Galileo / підтримка 2 SIM-карток (Nano-SIM) / Android 10 (Q) / 6000 мА·год
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
-        <div class="card border" style="border-radius: 10px;">
-            <div class="el-card-item pb-0">
-                <div class="el-card-avatar el-overlay-1 p-3" style="border-radius: 10px;">
-                    <img src="{% static '/assets/images/products/samsung_tv.png' %}" alt="user">
-                    <div class="el-overlay d-flex align-items-center justify-content-center">
-                        <a class="text-white" href="#!">
-                            <i class="mdi mdi-cart-outline pr-2" style="font-size: 34px"></i>
-                            <i class="far fa-heart pl-2" style="font-size: 33px"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body pt-0">
-                <h4>
-                    <a href="" class="text-dark" >
-                        TV Samsung 65
-                    </a>
-                </h4>
-                <div class="row pl-2 pb-3 d-flex align-items-center">
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <span class="text-muted pt-1 pl-3">2 відгуки</span>
-                </div>
-                <div class="row pl-2 pr-2 d-flex justify-content-between">
-                    <h5 class="text-danger">51 999 ₴</h5>
-                </div>
-                <span class="badge badge-success">
-                    <i class="fas fa-check"></i>
-                    Є в наявності
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="card border" style="border-radius: 10px;">
-            <div class="el-card-item pb-0">
-                <div class="el-card-avatar el-overlay-1 p-3" style="border-radius: 10px;">
-                    <img src="{% static '/assets/images/products/iphone_pro_11.png' %}" alt="user">
-                    <div class="el-overlay d-flex align-items-center justify-content-center">
-                        <a class="text-white" href="#!">
-                            <i class="mdi mdi-cart-outline pr-2" style="font-size: 34px"></i>
-                            <i class="far fa-heart pl-2" style="font-size: 33px"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body pt-0">
-                <h4>
-                    <a href="" class="text-dark" >
-                        Apple iPhone 11
-                    </a>
-                </h4>
-                <div class="row pl-2 pb-3 d-flex align-items-center">
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <span class="text-muted pt-1 pl-3">33 відгуки</span>
-                </div>
-                <div class="row pl-2 pr-2 d-flex justify-content-between">
-                    <h6><strike>20 000 ₴</strike></h6>
-                    <h5 class="text-danger">18 500 ₴</h5>
-                </div>
-                <span class="badge badge-success">
-                    <i class="fas fa-check"></i>
-                    Є в наявності
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="card border" style="border-radius: 10px;">
-            <div class="el-card-item pb-0">
-                <div class="el-card-avatar el-overlay-1 p-3" style="border-radius: 10px;">
-                    <img src="{% static '/assets/images/products/mac_pro_1.png' %}" alt="user">
-                    <div class="el-overlay d-flex align-items-center justify-content-center">
-                        <a class="text-white" href="#!">
-                            <i class="mdi mdi-cart-outline pr-2" style="font-size: 34px"></i>
-                            <i class="far fa-heart pl-2" style="font-size: 33px"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body pt-0">
-                <h4>
-                    <a href="" class="text-dark" >
-                        Apple MacBook
-                    </a>
-                </h4>
-                <div class="row pl-2 pb-3 d-flex align-items-center">
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <i class="far fa-star text-warning"></i>
-                    <span class="text-muted pt-1 pl-3">10 відгуки</span>
-                </div>
-                <div class="row pl-2 pr-2 d-flex justify-content-between">
-                    <h6><strike>90 000 ₴</strike></h6>
-                    <h5 class="text-danger">85 500 ₴</h5>
-                </div>
-                <span class="badge badge-danger">
-                    <i class="far fa-frown"></i>
-                    Немає в наявності
                 </span>
             </div>
         </div>
