@@ -20,7 +20,7 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["main_carousel_items"] = MainCarouselModel.objects.all()
+        context["main_carousel_items"] = MainCarouselModel.objects.all().only("item_alt", "item_image")
         return context
 
 

@@ -25,7 +25,8 @@ def get_product_info(request, slug_p):
         data["old_price"] = product.old_price
         data["product_images"] = ProductImage.get_images_by_product(product.product_id)
         data["product_descriptions"] = ProductDescription.get_description_by_product(product.product_id)
-        data['characteristic_list'] = CharacteristicProduct.get_characteristic_by_product(product.product_id)
+        data["characteristic_list"] = CharacteristicProduct.get_characteristic_by_product(product.product_id)
+        data["short_character"] = product.short_character
     except Product.DoesNotExist:
         data = {"errors": {"message": "Такого продукта немає"}}
         return Response(data, status=status.HTTP_404_NOT_FOUND)

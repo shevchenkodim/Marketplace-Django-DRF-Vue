@@ -25,6 +25,7 @@ class Product(SeoModel):
     category_id = models.ForeignKey(CategoryModel, on_delete=models.CASCADE)
     seller_id = models.ForeignKey(SellerModel, on_delete=models.CASCADE)
     brand = models.ForeignKey(BrandDict, on_delete=models.CASCADE, null=True, blank=True)
+    short_character = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
         db_table = 'product'
