@@ -1,4 +1,6 @@
 from django.contrib import admin
+
+from common.cart.cart_items import CartItems
 from common.products.categories.categories import CategoryModel
 from common.clients.sliders.main_sliders import MainCarouselModel
 from common.products.characteristic.characteristic import CharacteristicAttributes, CharacteristicProduct, \
@@ -14,6 +16,11 @@ from common.dictionaries.dictionaries import BrandDict, UnitDict, CurrencyDict, 
     TextSizeDict, TextColorDict, BackgroundColorDict, IconDict
 from common.geo.geo import CityModel, CountryModel, DistrictModel, IpAddressModel
 from common.geo.user_location_history import UserLocationHistoryModel
+
+
+@admin.register(CartItems)
+class CartItemsAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(ProductDescription)

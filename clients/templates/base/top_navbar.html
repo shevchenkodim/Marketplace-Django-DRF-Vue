@@ -48,6 +48,13 @@
             <ul class="navbar-nav float-right">
                 <!-- User profile and search -->
                 <li class="nav-item d-none d-md-block">
+                    {% if CART_LENGTH > 0 %}
+                        <span class="badge badge-pill badge-danger"
+                              style="position: absolute; margin-left: 40px; margin-top: 3px"
+                        >
+                            {{ CART_LENGTH }}
+                        </span>
+                    {% endif %}
                     <a class="nav-link waves-effect waves-light d-flex align-items-center" href="javascript:void(0)">
                         <i class="mdi mdi-cart-outline" style="font-size: 34px"></i>
                     </a>
