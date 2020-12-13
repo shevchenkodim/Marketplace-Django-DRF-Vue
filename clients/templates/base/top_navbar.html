@@ -1,5 +1,37 @@
 {% load static %}
 
+<script type="application/javascript">
+    init_navbar_urls = {
+        do_remove_item_from_cart_url: '',
+    },
+    init_navbar_state = {
+        cart: {{ CART| safe }},
+        loading: false,
+    };
+    init_navbar_methods = {
+        do_show_cart_modal() {
+            $('#modal_cart_id').modal('show');
+        },
+        do_add_item_to_cart() {},
+        do_remove_item_from_cart(product_id) {
+                this.state.loading = true
+
+                this.axios_post(this.urls.do_remove_item_from_cart_url, {"product_id": product_id})
+                 .then(resp => {
+                    if (resp.status == 200) {
+                        this.data.block_novelty.data.products = resp.data
+                    }
+                 }).catch(() => {
+
+                 }).finally(() => {
+                    this.state.loading = true
+                 })
+        },
+        do_load_cart() {},
+        do_save_item_cart() {}
+    };
+</script>
+
 <header class="topbar" data-navbarbg="skin5">
     <nav class="navbar top-navbar navbar-expand-md navbar-dark">
         <div class="navbar-header" data-logobg="skin5">
@@ -48,14 +80,12 @@
             <ul class="navbar-nav float-right">
                 <!-- User profile and search -->
                 <li class="nav-item d-none d-md-block">
-                    {% if CART_LENGTH > 0 %}
-                        <span class="badge badge-pill badge-danger"
-                              style="position: absolute; margin-left: 40px; margin-top: 3px"
-                        >
-                            {{ CART_LENGTH }}
-                        </span>
-                    {% endif %}
-                    <a class="nav-link waves-effect waves-light d-flex align-items-center" href="javascript:void(0)">
+                    <span v-if="state.cart.cart_count > 0" class="badge badge-pill badge-danger"
+                          style="position: absolute; margin-left: 40px; margin-top: 3px"
+                    >
+                        [[ state.cart.cart_count ]]
+                    </span>
+                    <a v-on:click="do_show_cart_modal();" class="nav-link waves-effect waves-light d-flex align-items-center" href="javascript:void(0)">
                         <i class="mdi mdi-cart-outline" style="font-size: 34px"></i>
                     </a>
                 </li>

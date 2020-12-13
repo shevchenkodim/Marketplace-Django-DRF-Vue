@@ -9,7 +9,7 @@ class SellerModel(SeoModel):
     name = models.CharField(max_length=125, unique=True, db_index=True)
     code_name = models.CharField(max_length=125, unique=True, db_index=True)
     phone = models.CharField(max_length=20, unique=True, default='+380000000000')
-    address = models.CharField(max_length=255, null=True, blank=True)
+    address = models.CharField(max_length=255, null=True, blank=True) # Create model Address
     schedule_work = models.TextField(blank=True)
     email = models.EmailField(default='default@gmail.com', unique=True)
     description = models.TextField(blank=True, null=True)

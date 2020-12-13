@@ -1,0 +1,51 @@
+<div class="modal fade" id="modal_cart_id" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <i class="mdi mdi-cart-outline"></i>
+                    Корзина
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body p-0">
+                <table class="table table-hover m-0">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Код продукта</th>
+                            <th class="text-center" scope="col">Кількість</th>
+                            <th class="text-center" scope="col">Ціна за один</th>
+                            <th class="text-center" scope="col">Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in state.cart.cart_items">
+                            <td>[[ item.product_id ]]</td>
+                            <td class="d-flex align-items-center justify-content-center">
+                                <a href="#" class="mr-1">
+                                    <i class="mdi mdi-minus"></i>
+                                </a>
+                                <input type="text" disabled v-bind:value="item.quantity" class="form-control" style="width: 50px">
+                                <a href="#" class="ml-1">
+                                    <i class="mdi mdi-plus"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">[[ item.price ]]</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+                <button type="button" class="btn btn-primary">Оформити завомлення</button>
+            </div>
+        </div>
+    </div>
+</div>

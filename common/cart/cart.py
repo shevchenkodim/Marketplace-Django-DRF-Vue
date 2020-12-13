@@ -23,9 +23,6 @@ class Cart(object):
         for item in cart_items:
             _ = item.get_item_json()
             self.__add_item_to_session(request, _)
-        # for item in self.cart:
-        #     count = self.cart[item]["quantity"]
-        #     self.__add_item_to_database(request, item, count)
 
     def add_item(self, request, product):
         """  Add a product to the cart"""
@@ -51,26 +48,29 @@ class Cart(object):
                 count=count
             )
 
+    def __get_cart_json_db(self, request):
+        data = dict()
+        data["cart_items"] = [x.get_item_json() for x in CartItems.objects.filter(client=request.user)]
+        data["cart_count"] = CartItems.get_len_items(request.user)
+        return data
+
+    def __get_cart_json_session(self, request):
+        data = dict()
+        data["cart_items"] = [x for x in self.cart]
+        data["cart_count"] = len(self.cart)
+        return data
+
     def save_session(self):
         self.session.modified = True
 
-    def get_len(self, request):
+    def get_cart_json(self, request):
         if request.user and request.user.id:
             if 'client' in request.user.user_roles(request.user.id):
-                return CartItems.get_len_items(request.user)
+                return self.__get_cart_json_db(request)
             else:
-                return len(self.cart)
+                return self.__get_cart_json_session(request)
         else:
-            return len(self.cart)
-
-
-# def __init__(self, request):
-#     """ Initialize the cart """
-#     self.session = request.session
-#     cart = self.session.get(settings.CART_SESSION_ID)
-#     if not cart:
-#         cart = self.session[settings.CART_SESSION_ID] = {}
-#     self.cart = cart
+            return self.__get_cart_json_session(request)
 
 
 #

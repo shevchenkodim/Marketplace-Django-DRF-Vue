@@ -47,6 +47,9 @@
         let init_state = {}
         let init_methods = {}
         let init_urls = {}
+        let init_navbar_state = {}
+        let init_navbar_methods = {}
+        let init_navbar_urls = {}
     </script>
 
     <div id="app">
@@ -171,14 +174,17 @@
                 },
                 state: {
                     ...init_state,
+                    ...init_navbar_state,
                 },
                 urls: {
                     ...init_urls,
+                    ...init_navbar_urls,
                 }
             },
             methods: {
                 ...utils,
                 ...init_methods,
+                ...init_navbar_methods,
             },
             created: function() {
                 this.do_init()
