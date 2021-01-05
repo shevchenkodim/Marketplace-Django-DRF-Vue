@@ -9,8 +9,9 @@ __pycache__/
 *.pot
 *.pyc
 .idea
-staticfiles
+/staticfiles/
 mediafiles
 syms_marketplace/.env
 
 db.sqlite3
+/mediafiles/
