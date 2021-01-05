@@ -1,4 +1,4 @@
-from Marketplace_Django_DRF_Vue import settings
+from syms_marketplace import settings
 from common.dictionaries.dictionaries import CurrencyDict
 from common.products.categories.categories import CategoryModel
 from common.cart.cart import Cart

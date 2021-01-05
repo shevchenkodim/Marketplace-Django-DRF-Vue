@@ -9,7 +9,8 @@ __pycache__/
 *.pot
 *.pyc
 .idea
-
-Marketplace_Django_DRF_Vue/.env
+staticfiles
+mediafiles
+syms_marketplace/.env
 
 db.sqlite3

@@ -12,7 +12,7 @@ from common.geo.user_location_history import UserLocationHistoryModel
 from common.models import User
 from broker.utils.otp_code.otp_code import GenerateOtpCode
 
-logger = logging.getLogger('Marketplace_Django_DRF_Vue.auth')
+logger = logging.getLogger('syms_marketplace.auth')
 
 first, second = "FIRST", "SECOND"
 

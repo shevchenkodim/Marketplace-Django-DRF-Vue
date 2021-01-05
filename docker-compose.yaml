@@ -1,29 +1,36 @@
 version: '3'
-
 services:
   syms_marketplace:
+    restart: always
     build:
       context: ./
       dockerfile: Dockerfile
-    command: gunicorn Marketplace_Django_DRF_Vue.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn syms_marketplace.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - ./app/:/usr/src/app/
+      - static_volume:/usr/src/syms_marketplace/staticfiles
+      - media_volume:/usr/src/syms_marketplace/mediafiles
     ports:
       - 8000:8000
     env_file:
-      - ./Marketplace_Django_DRF_Vue/.env
+      - syms_marketplace/.env
     depends_on:
       - postgresql_db
   postgresql_db:
+    restart: always
     image: postgres:12.0-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
   nginx:
-    build: config/nginx/Dockerfile
+    build:
+      context: ./config/nginx
+      dockerfile: Dockerfile
+    volumes:
+      - static_volume:/usr/src/syms_marketplace/staticfiles
     ports:
-      - 1337:80
+      - 80:80
     depends_on:
       - syms_marketplace
-
 volumes:
   postgres_data:
+  static_volume:
+  media_volume:
